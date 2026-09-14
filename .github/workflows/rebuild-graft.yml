@@ -1,0 +1,199 @@
+name: Refresh Graft snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/rebuild-graft.yml"
+      - "config.json"
+      - "scripts/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: graft-snapshot
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+    steps:
+      - name: Checkout analysis repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Resolve configuration and source commit
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_REPO="$(node -e "const c=require('./config.json');process.stdout.write(c.targetRepository)")"
+          TARGET_REF="$(node -e "const c=require('./config.json');process.stdout.write(c.targetRef)")"
+
+          rm -rf .work/target
+          mkdir -p .work
+          git clone --depth 1 --branch "$TARGET_REF" "https://github.com/${TARGET_REPO}.git" .work/target
+
+          TARGET_SHA="$(git -C .work/target rev-parse HEAD)"
+          PREVIOUS_SHA="$(node -e "try{const m=require('./snapshot/ki-usecase-radar/metadata.json');process.stdout.write(m.targetCommit||'')}catch(e){}")"
+
+          if [[ "$TARGET_SHA" == "$PREVIOUS_SHA" ]]; then
+            CHANGED=false
+          else
+            CHANGED=true
+          fi
+
+          echo "repo=$TARGET_REPO" >> "$GITHUB_OUTPUT"
+          echo "ref=$TARGET_REF" >> "$GITHUB_OUTPUT"
+          echo "sha=$TARGET_SHA" >> "$GITHUB_OUTPUT"
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
+
+      - name: Build and validate Graft graphs
+        id: build
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        env:
+          GRAFT_API_KEY: ${{ secrets.GRAFT_API_KEY }}
+          GRAFT_PROVIDER: ${{ vars.GRAFT_PROVIDER }}
+          GRAFT_MODEL: ${{ vars.GRAFT_MODEL }}
+          GRAFT_BASE_URL: ${{ vars.GRAFT_BASE_URL }}
+        run: |
+          set -euo pipefail
+          PACKAGE="$(node -e "const c=require('./config.json');process.stdout.write(c.graftPackage)")"
+          VERSION="$(node -e "const c=require('./config.json');process.stdout.write(c.graftVersion)")"
+          TARGET="$GITHUB_WORKSPACE/.work/target"
+          STRUCT_DIR="$GITHUB_WORKSPACE/.work/generated/structural"
+          SEM_DIR="$GITHUB_WORKSPACE/.work/generated/semantic"
+          SITE_DIR="$GITHUB_WORKSPACE/.work/generated/site"
+
+          rm -rf "$GITHUB_WORKSPACE/.work/generated"
+          mkdir -p "$STRUCT_DIR" "$SITE_DIR"
+
+          export GRAFT_NO_GITIGNORE=1
+          export GRAFT_NO_IGNORE=1
+          export GRAFT_DIR="$STRUCT_DIR"
+
+          npx -y "${PACKAGE}@${VERSION}" build "$TARGET"
+          npx -y "${PACKAGE}@${VERSION}" check "$TARGET"
+
+          BUILD_MODE=structural
+          ACTIVE_DIR="$STRUCT_DIR"
+          TABS="code,outline"
+
+          if [[ -n "${GRAFT_API_KEY:-}" && -n "${GRAFT_MODEL:-}" ]]; then
+            cp -a "$STRUCT_DIR" "$SEM_DIR"
+            export GRAFT_DIR="$SEM_DIR"
+            export GRAFT_PROVIDER="${GRAFT_PROVIDER:-openai}"
+            if [[ -z "${GRAFT_BASE_URL:-}" ]]; then
+              unset GRAFT_BASE_URL
+            fi
+            npx -y "${PACKAGE}@${VERSION}" build "$TARGET" --deep
+            npx -y "${PACKAGE}@${VERSION}" check "$TARGET"
+            BUILD_MODE=deep
+            ACTIVE_DIR="$SEM_DIR"
+            TABS="context,code,outline"
+          fi
+
+          export GRAFT_DIR="$ACTIVE_DIR"
+          npx -y "${PACKAGE}@${VERSION}" viz "$TARGET" \
+            --export "$SITE_DIR" \
+            --title "KI-UseCase-Radar @ ${GITHUB_SHA::12} / source ${TARGET_SHA:-${{ steps.source.outputs.sha }}}" \
+            --tabs "$TABS"
+
+          echo "mode=$BUILD_MODE" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare committed snapshot
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        env:
+          TARGET_REPO: ${{ steps.source.outputs.repo }}
+          TARGET_REF: ${{ steps.source.outputs.ref }}
+          TARGET_SHA: ${{ steps.source.outputs.sha }}
+          BUILD_MODE: ${{ steps.build.outputs.mode }}
+        run: |
+          set -euo pipefail
+          PACKAGE="$(node -e "const c=require('./config.json');process.stdout.write(c.graftPackage)")"
+          VERSION="$(node -e "const c=require('./config.json');process.stdout.write(c.graftVersion)")"
+          STRUCT_DEST="$(node -e "const c=require('./config.json');process.stdout.write(c.structuralSnapshotDir)")"
+          SEM_DEST="$(node -e "const c=require('./config.json');process.stdout.write(c.semanticSnapshotDir)")"
+          SITE_DEST="$(node -e "const c=require('./config.json');process.stdout.write(c.siteDir)")"
+
+          rm -rf "$STRUCT_DEST" "$SEM_DEST" "$SITE_DEST"
+          mkdir -p "$STRUCT_DEST" "$SITE_DEST"
+
+          cp -a .work/generated/structural/. "$STRUCT_DEST/"
+          rm -rf "$STRUCT_DEST/.cache"
+
+          SEMANTIC_PRESENT=false
+          if [[ -d .work/generated/semantic ]]; then
+            mkdir -p "$SEM_DEST"
+            cp -a .work/generated/semantic/. "$SEM_DEST/"
+            rm -rf "$SEM_DEST/.cache"
+            SEMANTIC_PRESENT=true
+          fi
+
+          cp .work/generated/site/index.html "$SITE_DEST/index.html"
+
+          STRUCT_HASH="$(sha256sum "$STRUCT_DEST/.graph/wiring.json" | awk '{print $1}')"
+          SITE_HASH="$(sha256sum "$SITE_DEST/index.html" | awk '{print $1}')"
+
+          export GRAFT_PACKAGE="$PACKAGE"
+          export GRAFT_VERSION="$VERSION"
+          export STRUCT_HASH
+          export SITE_HASH
+          export SEMANTIC_PRESENT
+
+          node <<'NODE'
+          const fs = require('fs');
+          const path = 'snapshot/ki-usecase-radar/metadata.json';
+          const data = {
+            schemaVersion: 1,
+            targetRepository: process.env.TARGET_REPO,
+            targetRef: process.env.TARGET_REF,
+            targetCommit: process.env.TARGET_SHA,
+            graftPackage: process.env.GRAFT_PACKAGE,
+            graftVersion: process.env.GRAFT_VERSION,
+            buildMode: process.env.BUILD_MODE,
+            semanticSnapshotPresent: process.env.SEMANTIC_PRESENT === 'true',
+            structuralWiringSha256: process.env.STRUCT_HASH,
+            visualizationSha256: process.env.SITE_HASH,
+            generatedAtUtc: new Date().toISOString()
+          };
+          fs.mkdirSync('snapshot/ki-usecase-radar', { recursive: true });
+          fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n');
+          NODE
+
+          printf "%s  .graph/wiring.json\n" "$STRUCT_HASH" > "$STRUCT_DEST/SHA256SUMS"
+          printf "%s  index.html\n" "$SITE_HASH" > "$SITE_DEST/SHA256SUMS"
+
+      - name: Commit refreshed snapshot
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        env:
+          TARGET_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add snapshot site
+
+          if git diff --cached --quiet; then
+            echo "Snapshot is unchanged."
+            exit 0
+          fi
+
+          git commit -m "chore(snapshot): refresh KI-UseCase-Radar ${TARGET_SHA::12}"
+          git push

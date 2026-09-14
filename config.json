@@ -1,0 +1,9 @@
+{
+  "targetRepository": "Satte882/KI-UseCase-Radar",
+  "targetRef": "main",
+  "graftPackage": "@nanonets/graft",
+  "graftVersion": "0.18.0",
+  "structuralSnapshotDir": "snapshot/ki-usecase-radar/structural",
+  "semanticSnapshotDir": "snapshot/ki-usecase-radar/semantic",
+  "siteDir": "site"
+}

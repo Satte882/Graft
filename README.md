@@ -1,3 +1,15 @@
+# Status / Fazit
+
+**Aktuelle Bewertung:** Graft ist technisch interessant, liefert für den KI-UseCase-Radar derzeit aber **keinen klaren ROI und ist kein Must-have**.
+
+Der Structural Graph macht Abhängigkeiten, zentrale Funktionen und potenzielle Change-Hotspots sichtbar. Das ist nützlich für große Refactorings, Impact-Analysen und unbekannte Codebasen. Beim KI-UseCase-Radar können Codex/Cline jedoch viele dieser Zusammenhänge bereits direkt aus dem Repository erschließen. Der zusätzliche Nutzen des Graphen ist deshalb aktuell eher inkrementell als wesentlich.
+
+Der sinnvolle Beweis wäre ein echter Vergleich bei einem größeren Refactoring: einmal normale Agenten-Analyse, einmal zusätzlich mit Graft. Nur wenn Graft dabei relevante Abhängigkeiten findet, die sonst übersehen würden, oder die Analyse deutlich beschleunigt, entsteht ein belastbarer Mehrwert.
+
+**Konsequenz:** Keine weitere Investition in Deep Graph, MCP-Integration oder zusätzliche Automatisierung, solange dieser Mehrwert nicht an einem realen KI-UseCase-Radar-Issue nachgewiesen ist. Das Repository kann daher archiviert werden; der aktuelle Stand bleibt als reproduzierbarer Versuch und Referenz erhalten.
+
+---
+
 # Graft – KI-UseCase-Radar Code Graph
 
 Dieses Repository hält die **Graft-Analyse getrennt vom Produkt-Repository** `Satte882/KI-UseCase-Radar`.

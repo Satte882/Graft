@@ -1,0 +1,51 @@
+name: Verify Graft snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/verify-snapshot.yml"
+      - "config.json"
+      - "scripts/verify.sh"
+      - "scripts/verify.ps1"
+      - "snapshot/ki-usecase-radar/metadata.json"
+      - "snapshot/ki-usecase-radar/structural/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: graft-snapshot-verification
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Graft analysis repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Checkout exact recorded KI-UseCase-Radar commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_REPO="$(node -e "const m=require('./snapshot/ki-usecase-radar/metadata.json');process.stdout.write(m.targetRepository)")"
+          TARGET_SHA="$(node -e "const m=require('./snapshot/ki-usecase-radar/metadata.json');process.stdout.write(m.targetCommit)")"
+
+          rm -rf .work/target
+          mkdir -p .work/target
+          git -C .work/target init -q
+          git -C .work/target remote add origin "https://github.com/${TARGET_REPO}.git"
+          git -C .work/target fetch -q --depth 1 origin "$TARGET_SHA"
+          git -C .work/target checkout -q --detach FETCH_HEAD
+
+      - name: Rebuild and verify structural snapshot
+        shell: bash
+        run: ./scripts/verify.sh .work/target

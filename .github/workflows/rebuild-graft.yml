@@ -11,6 +11,9 @@ on:
       - ".github/workflows/rebuild-graft.yml"
       - "config.json"
       - "scripts/**"
+  pull_request_target:
+    types:
+      - opened
 
 permissions:
   contents: write
@@ -28,6 +31,7 @@ jobs:
       - name: Checkout analysis repository
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 1
 
       - name: Set up Node.js
@@ -66,6 +70,7 @@ jobs:
         if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' }}
         shell: bash
         env:
+          TARGET_SHA: ${{ steps.source.outputs.sha }}
           GRAFT_API_KEY: ${{ secrets.GRAFT_API_KEY }}
           GRAFT_PROVIDER: ${{ vars.GRAFT_PROVIDER }}
           GRAFT_MODEL: ${{ vars.GRAFT_MODEL }}
@@ -110,7 +115,7 @@ jobs:
           export GRAFT_DIR="$ACTIVE_DIR"
           npx -y "${PACKAGE}@${VERSION}" viz "$TARGET" \
             --export "$SITE_DIR" \
-            --title "KI-UseCase-Radar @ ${GITHUB_SHA::12} / source ${TARGET_SHA:-${{ steps.source.outputs.sha }}}" \
+            --title "KI-UseCase-Radar @ ${TARGET_SHA::12}" \
             --tabs "$TABS"
 
           echo "mode=$BUILD_MODE" >> "$GITHUB_OUTPUT"
@@ -196,4 +201,4 @@ jobs:
           fi
 
           git commit -m "chore(snapshot): refresh KI-UseCase-Radar ${TARGET_SHA::12}"
-          git push
+          git push origin HEAD:main

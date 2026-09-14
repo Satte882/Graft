@@ -1,3 +1,4 @@
+// Deterministic report generator for the committed KI-UseCase-Radar Graft snapshot.
 import fs from 'node:fs';
 import path from 'node:path';
 

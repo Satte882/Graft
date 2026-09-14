@@ -1,0 +1,17 @@
+# tests/test_block7_solution_generation_validation.py
+
+- make_process · function · L66-L107 — def make_process(owner, business_unit)
+- statement · function · L110-L120 — def statement(text, source_id)
+- valid_payload · function · L123-L139 — def valid_payload()
+- context_for · function · L142-L143 — def context_for(process)
+- provider_result · function · L146-L154 — def provider_result(payload)
+- test_valid_bundle_is_normalized_against_current_source_context · function · L158-L165 — def test_valid_bundle_is_normalized_against_current_source_context(owner, business_unit)
+- test_unknown_source_id_is_rejected · function · L169-L177 — def test_unknown_source_id_is_rejected(owner, business_unit)
+- test_fourth_lane_and_forbidden_assessment_field_are_rejected · function · L181-L195 — def test_fourth_lane_and_forbidden_assessment_field_are_rejected(owner, business_unit)
+- test_statement_without_source_assumption_or_open_evidence_is_rejected · function · L199-L210 — def test_statement_without_source_assumption_or_open_evidence_is_rejected(owner, business_unit)
+- test_unsupported_quantitative_claim_is_rejected_even_with_source · function · L214-L225 — def test_unsupported_quantitative_claim_is_rejected_even_with_source(owner, business_unit)
+- test_source_backed_quantitative_claim_is_allowed · function · L229-L238 — def test_source_backed_quantitative_claim_is_allowed(owner, business_unit)
+- test_degenerate_options_with_only_different_names_are_rejected · function · L242-L254 — def test_degenerate_options_with_only_different_names_are_rejected(owner, business_unit)
+- test_full_generation_persists_preview_only_after_complete_validation · function · L259-L280 — def test_full_generation_persists_preview_only_after_complete_validation(owner, business_unit)
+- test_existing_manual_option_does_not_affect_generated_bundle_validation · function · L285-L304 — def test_existing_manual_option_does_not_affect_generated_bundle_validation(owner, business_unit)
+- test_invalid_bundle_fails_without_preview_or_solution_options · function · L309-L329 — def test_invalid_bundle_fails_without_preview_or_solution_options(owner, business_unit)

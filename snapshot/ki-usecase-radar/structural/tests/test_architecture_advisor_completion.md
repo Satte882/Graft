@@ -1,0 +1,4 @@
+# tests/test_architecture_advisor_completion.py
+
+- test_ruleset_version_is_aligned_across_contract_product_fixture_and_persistence · function · L29-L38 — def test_ruleset_version_is_aligned_across_contract_product_fixture_and_persistence()
+- test_v1_surface_remains_exactly_four_three_state_answers_and_five_modes · function · L41-L50 — def test_v1_surface_remains_exactly_four_three_state_answers_and_five_modes()

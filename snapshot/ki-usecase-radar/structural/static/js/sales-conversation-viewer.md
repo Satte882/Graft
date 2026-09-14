@@ -1,0 +1,17 @@
+# static/js/sales-conversation-viewer.js
+
+- svgElement · function · L55-L59 — function svgElement(name, attrs = {})
+- createConnectorLayer · function · L61-L76 — function createConnectorLayer(container, className)
+- relativeRect · function · L78-L92 — function relativeRect(element, containerRect)
+- appendArrowHead · function · L94-L118 — function appendArrowHead(svg, ex, ey, ux, uy, color, width, arrowLength = 10)
+- drawLineArrowPoints · function · L120-L142 — function drawLineArrowPoints(svg, sx, sy, ex, ey, color = "#8ea4b5", width = 2.1, arrowLength = 10)
+- drawCubicLine · function · L144-L156 — function drawCubicLine(svg, points, color = "#8ea4b5", width = 2.1)
+- drawCubicArrow · function · L158-L179 — function drawCubicArrow(svg, points, color = "#8ea4b5", width = 2.1, arrowLength = 10)
+- drawArrow · function · L181-L193 — function drawArrow(svg, containerRect, from, to, color = "#8ea4b5", width = 2.1)
+- drawSequentialConnectors · function · L195-L209 — function drawSequentialConnectors(containerSelector, nodeSelector, layerClass, colorForPair)
+- drawDataGraphConnectors · function · L211-L336 — function drawDataGraphConnectors()
+- drawStageGateConnectors · function · L338-L396 — function drawStageGateConnectors()
+- drawActiveConnectors · function · L398-L420 — function drawActiveConnectors()
+- scheduleConnectorDraw · function · L422-L427 — function scheduleConnectorDraw()
+- showSlide · function · L429-L452 — function showSlide(index, updateHash = true)
+- step · function · L454-L456 — function step(delta)

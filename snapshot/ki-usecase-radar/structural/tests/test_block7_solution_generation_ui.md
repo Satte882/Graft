@@ -1,0 +1,15 @@
+# tests/test_block7_solution_generation_ui.py
+
+- make_process · function · L36-L77 — def make_process(owner, business_unit)
+- statement · function · L80-L90 — def statement(text, *, assumptions=None, open_evidence=None)
+- preview_payload · function · L93-L115 — def preview_payload(process)
+- make_run · function · L118-L131 — def make_run(owner, process)
+- edit_post_data · function · L134-L139 — def edit_post_data(run)
+- test_compare_offers_manual_and_ai_entries_equally · function · L143-L155 — def test_compare_offers_manual_and_ai_entries_equally(client, owner, business_unit)
+- test_compare_explains_missing_generation_readiness · function · L159-L171 — def test_compare_explains_missing_generation_readiness(client, owner, business_unit)
+- test_generation_start_redirects_to_preview_without_domain_write · function · L175-L194 — def test_generation_start_redirects_to_preview_without_domain_write( client, owner, business_unit, )
+- test_generation_start_renders_quota_failure_as_safe_message · function · L198-L221 — def test_generation_start_renders_quota_failure_as_safe_message( client, owner, business_unit, )
+- test_preview_shows_shared_sources_provenance_and_unassessed_boundary · function · L225-L252 — def test_preview_shows_shared_sources_provenance_and_unassessed_boundary( client, owner, business_unit, )
+- test_preview_edit_persists_only_human_text_delta_without_decision_fields · function · L256-L278 — def test_preview_edit_persists_only_human_text_delta_without_decision_fields( client, owner, business_unit, )
+- test_stale_preview_is_visible_but_not_editable · function · L282-L295 — def test_stale_preview_is_visible_but_not_editable(client, owner, business_unit)
+- test_preview_uses_responsive_cards_without_comparison_table · function · L299-L313 — def test_preview_uses_responsive_cards_without_comparison_table( client, owner, business_unit, )

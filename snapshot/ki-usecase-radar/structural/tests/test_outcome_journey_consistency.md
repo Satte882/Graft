@@ -1,0 +1,17 @@
+# tests/test_outcome_journey_consistency.py
+
+- _use_case · function · L23-L38 — def _use_case(owner, business_unit, *, status=UseCase.Status.PILOT)
+- _final_approval · function · L41-L69 — def _final_approval(use_case, coordinator)
+- _handed_over_package · function · L72-L81 — def _handed_over_package(use_case, coordinator)
+- _start_pilot · function · L84-L86 — def _start_pilot(use_case)
+- _complete_measurement · function · L89-L102 — def _complete_measurement(use_case, *, measured_at=None)
+- _review · function · L105-L122 — def _review( use_case, coordinator, *, decision, previous_status, new_status, review_date=None, )
+- _outcome_states · function · L125-L126 — def _outcome_states(journey)
+- test_complete_pilot_measurement_exposes_only_result_decision_as_current · function · L130-L150 — def test_complete_pilot_measurement_exposes_only_result_decision_as_current( coordinator, owner, business_unit, )
+- test_operation_without_handover_or_reviews_is_blocked_as_data_inconsistency · function · L154-L173 — def test_operation_without_handover_or_reviews_is_blocked_as_data_inconsistency( coordinator, owner, business_unit, )
+- test_valid_operation_has_complete_predecessors_and_one_current_phase · function · L177-L204 — def test_valid_operation_has_complete_predecessors_and_one_current_phase( coordinator, owner, business_unit, )
+- test_go_live_review_with_wrong_previous_status_does_not_validate_operation · function · L208-L229 — def test_go_live_review_with_wrong_previous_status_does_not_validate_operation( coordinator, owner, business_unit, )
+- test_direct_end_from_pilot_marks_operation_optional · function · L233-L262 — def test_direct_end_from_pilot_marks_operation_optional( coordinator, owner, business_unit, )
+- test_end_review_outside_pilot_or_operation_does_not_validate_closure · function · L266-L291 — def test_end_review_outside_pilot_or_operation_does_not_validate_closure( coordinator, owner, business_unit, )
+- test_measurement_before_current_pilot_does_not_complete_pilot · function · L295-L326 — def test_measurement_before_current_pilot_does_not_complete_pilot( coordinator, owner, business_unit, )
+- test_selected_view_is_marked_independently_from_lifecycle_state · function · L330-L351 — def test_selected_view_is_marked_independently_from_lifecycle_state( client, coordinator, owner, business_unit, )

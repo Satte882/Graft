@@ -1,0 +1,12 @@
+# tests/test_issue_364_process_value_stream_hardening.py
+
+- test_process_analysis_prioritizes_validation_frame_diagnosis_and_findings · function · L22-L34 — def test_process_analysis_prioritizes_validation_frame_diagnosis_and_findings()
+- test_process_validation_keeps_current_readiness_visible_and_metadata_secondary · function · L37-L48 — def test_process_validation_keeps_current_readiness_visible_and_metadata_secondary()
+- test_process_core_is_flat_and_secondary_fields_use_native_disclosure · function · L51-L77 — def test_process_core_is_flat_and_secondary_fields_use_native_disclosure()
+- test_process_finding_source_anchors_remain_reachable_after_disclosure_move · function · L80-L98 — def test_process_finding_source_anchors_remain_reachable_after_disclosure_move()
+- test_process_findings_are_flat_and_remain_before_solution_selection · function · L101-L106 — def test_process_findings_are_flat_and_remain_before_solution_selection()
+- test_value_stream_prioritizes_trigger_outcome_and_focus_before_context · function · L109-L120 — def test_value_stream_prioritizes_trigger_outcome_and_focus_before_context()
+- test_value_stream_secondary_context_and_screening_use_native_disclosure · function · L123-L133 — def test_value_stream_secondary_context_and_screening_use_native_disclosure()
+- test_native_stage_disclosure_is_not_wrapped_by_legacy_runtime_enhancement · function · L136-L142 — def test_native_stage_disclosure_is_not_wrapped_by_legacy_runtime_enhancement()
+- test_focus_phase_keeps_selection_and_rationale_visible_before_evidence · function · L145-L153 — def test_focus_phase_keeps_selection_and_rationale_visible_before_evidence()
+- test_state_gated_stage_placeholders_are_status_copy_not_disabled_buttons · function · L156-L167 — def test_state_gated_stage_placeholders_are_status_copy_not_disabled_buttons()

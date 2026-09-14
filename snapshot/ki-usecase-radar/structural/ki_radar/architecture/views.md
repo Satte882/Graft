@@ -1,0 +1,21 @@
+# ki_radar/architecture/views.py
+
+- _validator_role · function · L84-L89 — def _validator_role(user) -> str
+- _can_edit_process · function · L92-L93 — def _can_edit_process(user, process_analysis: ProcessAnalysis) -> bool
+- _focus_is_selected · function · L96-L98 — def _focus_is_selected(value_stream: ValueStream) -> bool
+- _classification_prefill · function · L101-L109 — def _classification_prefill(value_stream: ValueStream, process_area: str) -> dict
+- _save_focus_actor · function · L112-L117 — def _save_focus_actor(value_stream: ValueStream, actor) -> None
+- value_stream_list · function · L121-L134 — def value_stream_list(request)
+- value_stream_detail · function · L138-L160 — def value_stream_detail(request, pk)
+- value_stream_create · function · L164-L181 — def value_stream_create(request)
+- value_stream_update · function · L185-L203 — def value_stream_update(request, pk)
+- stage_create · function · L207-L223 — def stage_create(request, value_stream_id)
+- stage_update · function · L227-L248 — def stage_update(request, pk)
+- stage_start_use_case · function · L252-L279 — def stage_start_use_case(request, pk)
+- process_analysis_create · function · L283-L316 — def process_analysis_create(request, stage_id)
+- process_analysis_detail · function · L320-L348 — def process_analysis_detail(request, pk)
+- process_analysis_update · function · L352-L401 — def process_analysis_update(request, pk)
+- process_analysis_validate · function · L405-L434 — def process_analysis_validate(request, pk)
+- solution_option_create · function · L438-L467 — def solution_option_create(request, process_analysis_id)
+- solution_option_update · function · L471-L502 — def solution_option_update(request, pk)
+- solution_option_start_use_case · function · L506-L552 — def solution_option_start_use_case(request, pk)

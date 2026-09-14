@@ -1,0 +1,24 @@
+# tests/test_llm_task_runtime.py
+
+- FakeResponse · class · L32-L44 — class FakeResponse
+- __init__ · method · L33-L34 — def __init__(self, payload: object)
+- __enter__ · method · L36-L37 — def __enter__(self)
+- __exit__ · method · L39-L40 — def __exit__(self, exc_type, exc, traceback)
+- read · method · L42-L44 — def read(self, size=-1) -> bytes
+- _messages · function · L47-L51 — def _messages(text: str = "grounded context") -> list[dict[str, str]]
+- _prepare_delivery · function · L54-L67 — def _prepare_delivery(owner, **overrides)
+- _prepare_consistency · function · L70-L82 — def _prepare_consistency(owner, **overrides)
+- test_first_wave_task_policies_are_explicit_and_separate · function · L86-L99 — def test_first_wave_task_policies_are_explicit_and_separate()
+- test_unknown_task_type_fails_closed · function · L103-L105 — def test_unknown_task_type_fails_closed()
+- test_openrouter_combines_reasoning_effort_and_exclusion · function · L113-L150 — def test_openrouter_combines_reasoning_effort_and_exclusion(monkeypatch)
+- fake_urlopen · function · L126-L128 — def fake_urlopen(request, timeout)
+- test_prepare_task_reserves_context_user_global_quota_without_content · function · L155-L177 — def test_prepare_task_reserves_context_user_global_quota_without_content(owner)
+- test_oversized_input_fails_before_run_or_quota · function · L187-L193 — def test_oversized_input_fails_before_run_or_quota(owner)
+- test_runtime_forwards_privacy_reasoning_and_records_only_metadata · function · L198-L249 — def test_runtime_forwards_privacy_reasoning_and_records_only_metadata( owner, monkeypatch, caplog, )
+- fake_request_openrouter · function · L219-L221 — def fake_request_openrouter(**kwargs)
+- test_provider_error_fails_run_without_retry · function · L254-L275 — def test_provider_error_fails_run_without_retry(owner, monkeypatch)
+- fail_provider · function · L257-L260 — def fail_provider(**kwargs)
+- test_fourth_context_call_is_blocked_atomically · function · L280-L292 — def test_fourth_context_call_is_blocked_atomically(owner)
+- test_user_quota_is_shared_across_first_wave_tasks · function · L303-L315 — def test_user_quota_is_shared_across_first_wave_tasks(owner)
+- test_global_quota_is_shared_across_users · function · L327-L339 — def test_global_quota_is_shared_across_users(owner, other_owner)
+- test_cleanup_command_removes_only_expired_llm_task_runs · function · L344-L360 — def test_cleanup_command_removes_only_expired_llm_task_runs(owner)

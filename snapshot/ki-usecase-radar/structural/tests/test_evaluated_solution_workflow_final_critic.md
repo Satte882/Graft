@@ -1,0 +1,22 @@
+# tests/test_evaluated_solution_workflow_final_critic.py
+
+- _make_process · function · L82-L123 — def _make_process(owner, business_unit) -> ProcessAnalysis
+- _statement · function · L126-L136 — def _statement(text: str, source_id: str) -> dict[str, object]
+- _valid_generation_payload · function · L139-L154 — def _valid_generation_payload() -> dict[str, object]
+- _make_generation_run · function · L157-L182 — def _make_generation_run(owner, business_unit) -> SolutionGenerationRun
+- _critic_payload · function · L185-L200 — def _critic_payload(*, repairable: bool = True) -> dict[str, object]
+- _critic_provider_result · function · L203-L216 — def _critic_provider_result(payload=None) -> OpenRouterResult
+- _repair_payload · function · L219-L233 — def _repair_payload() -> dict[str, object]
+- _repair_provider_result · function · L236-L249 — def _repair_provider_result() -> OpenRouterResult
+- _make_initial_critic · function · L252-L272 — def _make_initial_critic(run: SolutionGenerationRun) -> SolutionQualityRun
+- _persist_successful_repair · function · L275-L311 — def _persist_successful_repair(run: SolutionGenerationRun) -> SolutionQualityRun
+- test_final_critic_uses_same_structured_contract_once_and_preserves_repaired_preview · function · L316-L359 — def test_final_critic_uses_same_structured_contract_once_and_preserves_repaired_preview( owner, business_unit, )
+- test_final_critic_requires_successful_repair_before_any_provider_call · function · L364-L387 — def test_final_critic_requires_successful_repair_before_any_provider_call(owner, business_unit)
+- test_final_critic_stale_binding_is_terminal_before_provider_and_preserves_preview · function · L392-L420 — def test_final_critic_stale_binding_is_terminal_before_provider_and_preserves_preview( owner, business_unit, )
+- test_final_critic_provider_failure_preserves_preview_and_consumes_attempt · function · L425-L455 — def test_final_critic_provider_failure_preserves_preview_and_consumes_attempt( owner, business_unit, )
+- test_remaining_final_findings_end_in_human_review_without_second_repair · function · L460-L494 — def test_remaining_final_findings_end_in_human_review_without_second_repair(owner, business_unit)
+- test_successful_repair_persistence_schedules_exactly_one_final_critic · function · L499-L523 — def test_successful_repair_persistence_schedules_exactly_one_final_critic(owner, business_unit)
+- test_failed_repair_persistence_never_schedules_final_critic · function · L528-L556 — def test_failed_repair_persistence_never_schedules_final_critic(owner, business_unit)
+- test_workflow_has_hard_maximum_of_four_model_calls_including_generation · function · L561-L601 — def test_workflow_has_hard_maximum_of_four_model_calls_including_generation(owner, business_unit)
+- test_final_critic_truncated_output_is_terminal_and_preserves_repaired_preview · function · L606-L644 — def test_final_critic_truncated_output_is_terminal_and_preserves_repaired_preview( owner, business_unit, )
+- test_final_critic_invalid_response_is_terminal_and_preserves_repaired_preview · function · L650-L688 — def test_final_critic_invalid_response_is_terminal_and_preserves_repaired_preview( owner, business_unit, content, )

@@ -1,0 +1,5 @@
+# tests/test_block7_runtime_config.py
+
+- test_block7_default_budget_and_local_compose_forwarding_are_aligned · function · L12-L23 — def test_block7_default_budget_and_local_compose_forwarding_are_aligned()
+- test_block7_prompt_explicitly_caps_verbosity_without_dropping_comparison_fields · function · L26-L28 — def test_block7_prompt_explicitly_caps_verbosity_without_dropping_comparison_fields()
+- test_runtime_policy_command_exposes_effective_solution_generation_and_provider_config · function · L39-L52 — def test_runtime_policy_command_exposes_effective_solution_generation_and_provider_config()

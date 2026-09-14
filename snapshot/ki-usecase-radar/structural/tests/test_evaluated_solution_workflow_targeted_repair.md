@@ -1,0 +1,22 @@
+# tests/test_evaluated_solution_workflow_targeted_repair.py
+
+- _make_process · function · L76-L117 — def _make_process(owner, business_unit) -> ProcessAnalysis
+- _statement · function · L120-L130 — def _statement(text: str, source_id: str) -> dict[str, object]
+- _valid_generation_payload · function · L133-L148 — def _valid_generation_payload() -> dict[str, object]
+- _make_generation_run · function · L151-L176 — def _make_generation_run(owner, business_unit) -> SolutionGenerationRun
+- _critic_findings · function · L179-L204 — def _critic_findings() -> list[dict[str, object]]
+- _make_initial_critic · function · L207-L234 — def _make_initial_critic(run: SolutionGenerationRun) -> SolutionQualityRun
+- _repair_payload · function · L237-L259 — def _repair_payload() -> dict[str, object]
+- _provider_result · function · L262-L275 — def _provider_result(payload=None, *, finish_reason="stop") -> OpenRouterResult
+- _plan_context · function · L278-L289 — def _plan_context(run: SolutionGenerationRun)
+- test_repair_payload_requires_exact_bound_target_set · function · L293-L309 — def test_repair_payload_requires_exact_bound_target_set(owner, business_unit)
+- test_repair_payload_rejects_missing_and_duplicate_targets · function · L313-L329 — def test_repair_payload_rejects_missing_and_duplicate_targets(owner, business_unit)
+- test_targeted_repair_uses_one_provider_call_and_activates_only_bound_statements · function · L334-L389 — def test_targeted_repair_uses_one_provider_call_and_activates_only_bound_statements( owner, business_unit, )
+- test_repair_with_invalid_quantitative_claim_is_discarded_atomically · function · L394-L417 — def test_repair_with_invalid_quantitative_claim_is_discarded_atomically(owner, business_unit)
+- test_provider_failure_preserves_original_preview_and_consumes_one_shot · function · L422-L455 — def test_provider_failure_preserves_original_preview_and_consumes_one_shot(owner, business_unit)
+- test_human_edit_during_provider_call_wins_and_stale_repair_is_discarded · function · L460-L493 — def test_human_edit_during_provider_call_wins_and_stale_repair_is_discarded(owner, business_unit)
+- provider_with_human_edit · function · L464-L474 — def provider_with_human_edit(**kwargs)
+- test_later_human_review_overrides_repaired_text_without_destroying_repair_provenance · function · L498-L532 — def test_later_human_review_overrides_repaired_text_without_destroying_repair_provenance( owner, business_unit, )
+- test_repair_input_limit_fails_before_provider_and_preserves_preview · function · L542-L560 — def test_repair_input_limit_fails_before_provider_and_preserves_preview(owner, business_unit)
+- test_repair_truncated_output_is_terminal_and_preserves_preview · function · L565-L599 — def test_repair_truncated_output_is_terminal_and_preserves_preview(owner, business_unit)
+- test_repair_invalid_response_is_terminal_and_preserves_preview · function · L605-L650 — def test_repair_invalid_response_is_terminal_and_preserves_preview( owner, business_unit, content, )

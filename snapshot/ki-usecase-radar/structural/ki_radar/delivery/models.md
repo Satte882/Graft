@@ -1,0 +1,25 @@
+# ki_radar/delivery/models.py
+
+- DeliveryPackage · class · L36-L157 — class DeliveryPackage(TimeStampedModel)
+- Status · class · L37-L40 — class Status(models.TextChoices)
+- Meta · class · L133-L140 — class Meta
+- __str__ · method · L142-L143 — def __str__(self) -> str
+- save · method · L145-L154 — def save(self, *args, **kwargs)
+- get_absolute_url · method · L156-L157 — def get_absolute_url(self)
+- DeliverySectionReview · class · L160-L275 — class DeliverySectionReview(TimeStampedModel)
+- Section · class · L161-L180 — class Section(models.TextChoices)
+- ContentOrigin · class · L182-L186 — class ContentOrigin(models.TextChoices)
+- ReviewStatus · class · L188-L192 — class ReviewStatus(models.TextChoices)
+- Meta · class · L241-L248 — class Meta
+- __str__ · method · L250-L251 — def __str__(self) -> str
+- required_confirmations · method · L254-L255 — def required_confirmations(self) -> frozenset[str]
+- role_confirmations_complete · method · L258-L263 — def role_confirmations_complete(self) -> bool
+- has_role_collapse · method · L266-L271 — def has_role_collapse(self) -> bool
+- confirmations_complete · method · L274-L275 — def confirmations_complete(self) -> bool
+- DeliveryRoleSourceDecision · class · L278-L321 — class DeliveryRoleSourceDecision(TimeStampedModel)
+- RoleKey · class · L279-L280 — class RoleKey(models.TextChoices)
+- Decision · class · L282-L284 — class Decision(models.TextChoices)
+- Meta · class · L309-L310 — class Meta
+- __str__ · method · L312-L313 — def __str__(self) -> str
+- save · method · L315-L318 — def save(self, *args, **kwargs)
+- delete · method · L320-L321 — def delete(self, *args, **kwargs)

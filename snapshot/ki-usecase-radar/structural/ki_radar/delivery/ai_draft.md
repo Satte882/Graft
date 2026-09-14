@@ -1,0 +1,32 @@
+# ki_radar/delivery/ai_draft.py
+
+- DeliveryDraftError · class · L148-L151 — class DeliveryDraftError(RuntimeError)
+- __init__ · method · L149-L151 — def __init__(self, message: str, *, code: str) -> None
+- DeliveryDraftContextError · class · L154-L160 — class DeliveryDraftContextError(DeliveryDraftError)
+- __init__ · method · L155-L160 — def __init__(self, missing_labels: tuple[str, ...]) -> None
+- DeliveryDraftValidationError · class · L163-L164 — class DeliveryDraftValidationError(DeliveryDraftError)
+- DeliveryDraftSource · class · L168-L190 — class DeliveryDraftSource
+- prompt_payload · method · L175-L182 — def prompt_payload(self) -> dict[str, str]
+- display_payload · method · L184-L190 — def display_payload(self) -> dict[str, str]
+- DeliveryDraftContext · class · L194-L202 — class DeliveryDraftContext
+- source_ids · method · L201-L202 — def source_ids(self) -> frozenset[str]
+- DeliveryDraftPageState · class · L206-L209 — class DeliveryDraftPageState
+- DeliveryDraftResult · class · L213-L222 — class DeliveryDraftResult
+- _clean · function · L225-L226 — def _clean(value: object) -> str
+- _version · function · L229-L231 — def _version(prefix: str, updated_at) -> str
+- _delivery_value · function · L234-L241 — def _delivery_value( package: DeliveryPackage, field_name: str, overrides: Mapping[str, object], ) -> str
+- _canonical_hash · function · L244-L251 — def _canonical_hash(payload: dict[str, Any]) -> str
+- build_mvp_scope_context · function · L254-L320 — def build_mvp_scope_context( package: DeliveryPackage, *, overrides: Mapping[str, object] | None = None, ) -> DeliveryDraftContext
+- mvp_scope_page_state · function · L323-L333 — def mvp_scope_page_state(package: DeliveryPackage, *, show: bool) -> DeliveryDraftPageState
+- _messages · function · L336-L343 — def _messages(context: DeliveryDraftContext) -> list[dict[str, str]]
+- _normalize_number · function · L346-L347 — def _normalize_number(token: str) -> str
+- _quantitative_tokens · function · L350-L351 — def _quantitative_tokens(text: str) -> set[str]
+- _require_exact_keys · function · L354-L359 — def _require_exact_keys(payload: dict[str, Any], expected: set[str], *, code: str) -> None
+- _validate_string_list · function · L362-L387 — def _validate_string_list( value: object, *, field_name: str, max_items: int, ) -> tuple[str, ...]
+- validate_mvp_scope_draft_payload · function · L390-L490 — def validate_mvp_scope_draft_payload( payload: object, *, context: DeliveryDraftContext, ) -> dict[str, Any]
+- _parse_provider_payload · function · L493-L501 — def _parse_provider_payload(content: str, *, context: DeliveryDraftContext) -> dict[str, Any]
+- log_ai_assist_event · function · L504-L524 — def log_ai_assist_event( event: str, *, package: DeliveryPackage, actor, run_id: object = "", **metadata: object, ) -> None
+- generate_mvp_scope_draft · function · L527-L615 — def generate_mvp_scope_draft( *, package: DeliveryPackage, actor, overrides: Mapping[str, object] | None = None, regenerated: bool = False, ) -> DeliveryDraftResult
+- delivery_draft_run_for_actor · function · L618-L637 — def delivery_draft_run_for_actor( *, package: DeliveryPackage, actor, run_id: object, ) -> LLMTaskRun | None
+- source_hash_is_current · function · L640-L651 — def source_hash_is_current( *, package: DeliveryPackage, expected_hash: str, overrides: Mapping[str, object] | None = None, ) -> bool
+- record_saved_assist · function · L654-L687 — def record_saved_assist( *, package: DeliveryPackage, actor, run_id: object, edited_before_save: object, edit_ratio: object, blocker_before: bool, blocker_after: bool, ) -> None

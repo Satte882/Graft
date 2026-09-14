@@ -1,0 +1,25 @@
+# ki_radar/architecture/forms.py
+
+- eligible_value_stream_owners · function · L24-L30 — def eligible_value_stream_owners()
+- is_eligible_value_stream_owner · function · L33-L38 — def is_eligible_value_stream_owner(user) -> bool
+- StyledModelForm · class · L41-L50 — class StyledModelForm(forms.ModelForm)
+- __init__ · method · L42-L50 — def __init__(self, *args, **kwargs)
+- ValueStreamForm · class · L53-L248 — class ValueStreamForm(StyledModelForm)
+- Meta · class · L98-L123 — class Meta
+- __init__ · method · L125-L195 — def __init__(self, *args, **kwargs)
+- clean_business_unit · method · L197-L203 — def clean_business_unit(self)
+- clean_owner · method · L205-L212 — def clean_owner(self)
+- clean · method · L214-L231 — def clean(self)
+- save · method · L233-L248 — def save(self, commit=True)
+- ValueStreamStageForm · class · L251-L271 — class ValueStreamStageForm(StyledModelForm)
+- Meta · class · L252-L271 — class Meta
+- ProcessAnalysisForm · class · L274-L339 — class ProcessAnalysisForm(StyledModelForm)
+- clean_status · method · L275-L284 — def clean_status(self)
+- Meta · class · L286-L339 — class Meta
+- ProcessValidationForm · class · L342-L355 — class ProcessValidationForm(forms.Form)
+- SolutionOptionForm · class · L358-L435 — class SolutionOptionForm(StyledModelForm)
+- __init__ · method · L359-L379 — def __init__(self, *args, process_analysis=None, **kwargs)
+- clean · method · L381-L399 — def clean(self)
+- Meta · class · L401-L435 — class Meta
+- SolutionSelectionForm · class · L438-L458 — class SolutionSelectionForm(forms.Form)
+- __init__ · method · L453-L458 — def __init__(self, *args, options=(), **kwargs)

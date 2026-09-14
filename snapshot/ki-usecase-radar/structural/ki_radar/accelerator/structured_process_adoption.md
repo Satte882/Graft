@@ -1,0 +1,23 @@
+# ki_radar/accelerator/structured_process_adoption.py
+
+- StructuredProcessError · class · L26-L27 — class StructuredProcessError(ValueError)
+- StructuredProcessReferenceError · class · L30-L31 — class StructuredProcessReferenceError(StructuredProcessError)
+- StructuredProcessValidationError · class · L34-L37 — class StructuredProcessValidationError(StructuredProcessError)
+- __init__ · method · L35-L37 — def __init__(self, errors: dict[str, list[str]])
+- StageReferenceKind · class · L40-L42 — class StageReferenceKind(StrEnum)
+- StageReference · class · L46-L70 — class StageReference
+- existing · method · L52-L59 — def existing(cls, stage_id: UUID | str) -> StageReference
+- local · method · L62-L63 — def local(cls, local_key: str) -> StageReference
+- snapshot · method · L65-L70 — def snapshot(self) -> dict[str, str]
+- ProcessSuggestionGroup · class · L74-L77 — class ProcessSuggestionGroup
+- StructuredProcessResult · class · L81-L83 — class StructuredProcessResult
+- _excerpt_hash · function · L101-L102 — def _excerpt_hash(value: str) -> str
+- _suggestion_source_metadata · function · L105-L117 — def _suggestion_source_metadata(suggestion) -> tuple[str, str]
+- _validate_process_values · function · L120-L145 — def _validate_process_values(*, local_key: str, values: dict[str, Any]) -> dict[str, str]
+- group_process_suggestions · function · L148-L213 — def group_process_suggestions( suggestions: Iterable[CaptureFieldSuggestion], ) -> tuple[ProcessSuggestionGroup, ...]
+- process_item_defaults · function · L216-L234 — def process_item_defaults( group: ProcessSuggestionGroup, *, stage_reference: StageReference, ) -> dict[str, Any]
+- _confirmed_process_values · function · L237-L260 — def _confirmed_process_values(item: StructuredAdoptionItem) -> dict[str, str]
+- _stage_reference_from_item · function · L263-L272 — def _stage_reference_from_item(item: StructuredAdoptionItem) -> StageReference
+- _resolve_stage · function · L275-L327 — def _resolve_stage( *, value_stream: ValueStream, item: StructuredAdoptionItem, reference: StageReference, ) -> ValueStreamStage
+- _build_source_snapshot · function · L330-L365 — def _build_source_snapshot( *, item: StructuredAdoptionItem, reference: StageReference, stage: ValueStreamStage, ) -> dict[str, Any]
+- adopt_process_item · function · L369-L438 — def adopt_process_item( *, value_stream_id: UUID, item: StructuredAdoptionItem, ) -> StructuredProcessResult

@@ -1,0 +1,22 @@
+# ki_radar/core/llm_tasks.py
+
+- LLMTaskError · class · L29-L32 — class LLMTaskError(RuntimeError)
+- __init__ · method · L30-L32 — def __init__(self, message: str, *, code: str) -> None
+- LLMTaskQuotaExceeded · class · L35-L36 — class LLMTaskQuotaExceeded(LLMTaskError)
+- PreparedLLMTask · class · L40-L43 — class PreparedLLMTask
+- _require_text · function · L46-L53 — def _require_text(name: str, value: object, *, max_length: int) -> str
+- _validate_source_hash · function · L56-L63 — def _validate_source_hash(source_hash: object) -> str
+- _message_input_chars · function · L66-L80 — def _message_input_chars(messages: list[dict[str, str]]) -> int
+- _quota_subject · function · L83-L101 — def _quota_subject( scope: str, *, actor, task_type: str, object_type: str, object_id: str, field_key: str, ) -> dict[str, object]
+- _increment_quota · function · L104-L141 — def _increment_quota( *, scope: str, actor, task_type: str, object_type: str, object_id: str, field_key: str, quota_date, limit: int, ) -> None
+- _reserve_quotas · function · L144-L168 — def _reserve_quotas( *, actor, task_type: str, object_type: str, object_id: str, field_key: str, policy: LLMTaskPolicy, ) -> None
+- _duration_ms · function · L171-L172 — def _duration_ms(run: LLMTaskRun, finished_at) -> int
+- _usage_int · function · L175-L181 — def _usage_int(value: object) -> int | None
+- _cost · function · L184-L190 — def _cost(value: object) -> Decimal | None
+- _apply_provider_metadata · function · L193-L199 — def _apply_provider_metadata(run: LLMTaskRun, result: OpenRouterResult) -> None
+- log_llm_task_run · function · L202-L224 — def log_llm_task_run(run: LLMTaskRun) -> None
+- prepare_llm_task · function · L229-L300 — def prepare_llm_task( *, task_type: str, actor, object_type: str, object_id: object, source_hash: str, prompt_version: str, schema_version: str, messages: list[dict[str, str]], field_key: str = "", ) -> PreparedLLMTask
+- mark_llm_task_failed · function · L304-L336 — def mark_llm_task_failed( *, run_id, error_code: str, result: OpenRouterResult | None = None, ) -> LLMTaskRun
+- record_llm_task_provider_result · function · L340-L360 — def record_llm_task_provider_result( *, run_id, result: OpenRouterResult, ) -> LLMTaskRun
+- mark_llm_task_success · function · L364-L383 — def mark_llm_task_success(*, run_id) -> LLMTaskRun
+- request_llm_task_provider · function · L387-L423 — def request_llm_task_provider( prepared: PreparedLLMTask, *, response_format: dict[str, Any], ) -> OpenRouterResult

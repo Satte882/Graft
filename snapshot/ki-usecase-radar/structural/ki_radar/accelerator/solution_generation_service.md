@@ -1,0 +1,25 @@
+# ki_radar/accelerator/solution_generation_service.py
+
+- SolutionGenerationError · class · L51-L54 — class SolutionGenerationError(RuntimeError)
+- __init__ · method · L52-L54 — def __init__(self, message: str, *, code: str) -> None
+- SolutionGenerationAlreadyRunning · class · L57-L58 — class SolutionGenerationAlreadyRunning(SolutionGenerationError)
+- SolutionGenerationQuotaExceeded · class · L61-L62 — class SolutionGenerationQuotaExceeded(SolutionGenerationError)
+- PreparedSolutionGeneration · class · L66-L70 — class PreparedSolutionGeneration
+- SolutionGenerationProviderPayload · class · L74-L76 — class SolutionGenerationProviderPayload
+- log_solution_generation_run · function · L79-L98 — def log_solution_generation_run(run: SolutionGenerationRun) -> None
+- _quota_subject · function · L101-L106 — def _quota_subject(scope: str, *, actor, process_analysis: ProcessAnalysis) -> dict[str, object]
+- _increment_quota · function · L109-L138 — def _increment_quota( *, scope: str, actor, process_analysis: ProcessAnalysis, quota_date, limit: int, ) -> None
+- _reserve_solution_generation_quotas · function · L141-L162 — def _reserve_solution_generation_quotas( *, actor, process_analysis: ProcessAnalysis, policy: AcceleratorLLMPolicy, quota_date, ) -> None
+- _duration_ms · function · L165-L166 — def _duration_ms(run: SolutionGenerationRun, finished_at) -> int
+- _usage_int · function · L169-L175 — def _usage_int(value: object) -> int | None
+- _cost · function · L178-L184 — def _cost(value: object) -> Decimal | None
+- _apply_provider_metadata · function · L187-L193 — def _apply_provider_metadata(run: SolutionGenerationRun, result: OpenRouterResult) -> None
+- _recover_or_reject_running_generation · function · L196-L224 — def _recover_or_reject_running_generation( *, process_analysis: ProcessAnalysis, policy: AcceleratorLLMPolicy, ) -> None
+- _contract_error_summary · function · L227-L234 — def _contract_error_summary(exc: SolutionGenerationContractError) -> str
+- prepare_solution_generation_run · function · L239-L302 — def prepare_solution_generation_run(*, actor, process_analysis_id) -> PreparedSolutionGeneration
+- mark_solution_generation_failed · function · L306-L341 — def mark_solution_generation_failed( *, run_id, error_code: str, result: OpenRouterResult | None = None, ) -> SolutionGenerationRun
+- record_solution_generation_provider_result · function · L345-L365 — def record_solution_generation_provider_result( *, run_id, result: OpenRouterResult, ) -> SolutionGenerationRun
+- mark_solution_generation_success · function · L369-L394 — def mark_solution_generation_success( *, run_id, preview_payload: dict[str, Any], ) -> SolutionGenerationRun
+- request_solution_generation_provider · function · L398-L465 — def request_solution_generation_provider( prepared: PreparedSolutionGeneration, ) -> SolutionGenerationProviderPayload
+- _validated_preview_payload · function · L468-L480 — def _validated_preview_payload( *, prepared: PreparedSolutionGeneration, payload: dict[str, Any], ) -> dict[str, Any]
+- generate_solution_preview · function · L484-L533 — def generate_solution_preview(*, actor, process_analysis_id) -> SolutionGenerationRun

@@ -1,0 +1,41 @@
+# ki_radar/accelerator/models.py
+
+- CaptureSession · class · L12-L116 — class CaptureSession(TimeStampedModel)
+- CaptureType · class · L13-L15 — class CaptureType(models.TextChoices)
+- Status · class · L17-L21 — class Status(models.TextChoices)
+- Meta · class · L64-L94 — class Meta
+- progress_percent · method · L97-L100 — def progress_percent(self) -> int
+- is_editable · method · L103-L104 — def is_editable(self) -> bool
+- target_object · method · L107-L112 — def target_object(self)
+- __str__ · method · L114-L116 — def __str__(self) -> str
+- CaptureAnalysis · class · L119-L194 — class CaptureAnalysis(TimeStampedModel)
+- Status · class · L120-L123 — class Status(models.TextChoices)
+- Meta · class · L166-L191 — class Meta
+- __str__ · method · L193-L194 — def __str__(self) -> str
+- CaptureFieldSuggestion · class · L197-L254 — class CaptureFieldSuggestion(TimeStampedModel)
+- TargetObjectType · class · L198-L203 — class TargetObjectType(models.TextChoices)
+- FieldType · class · L205-L214 — class FieldType(models.TextChoices)
+- Uncertainty · class · L216-L219 — class Uncertainty(models.TextChoices)
+- Meta · class · L238-L251 — class Meta
+- __str__ · method · L253-L254 — def __str__(self) -> str
+- FieldAdoptionCandidate · class · L257-L358 — class FieldAdoptionCandidate(TimeStampedModel)
+- Status · class · L258-L267 — class Status(models.TextChoices)
+- Meta · class · L308-L355 — class Meta
+- __str__ · method · L357-L358 — def __str__(self) -> str
+- FieldAdoptionAudit · class · L361-L447 — class FieldAdoptionAudit(TimeStampedModel)
+- Action · class · L362-L364 — class Action(models.TextChoices)
+- Meta · class · L433-L444 — class Meta
+- __str__ · method · L446-L447 — def __str__(self) -> str
+- SolutionGenerationRun · class · L450-L523 — class SolutionGenerationRun(TimeStampedModel)
+- Status · class · L451-L454 — class Status(models.TextChoices)
+- Meta · class · L494-L520 — class Meta
+- __str__ · method · L522-L523 — def __str__(self) -> str
+- SolutionQualityRun · class · L526-L601 — class SolutionQualityRun(TimeStampedModel)
+- StepType · class · L527-L530 — class StepType(models.TextChoices)
+- Status · class · L532-L535 — class Status(models.TextChoices)
+- Meta · class · L574-L598 — class Meta
+- __str__ · method · L600-L601 — def __str__(self) -> str
+- AcceleratorLLMQuota · class · L604-L695 — class AcceleratorLLMQuota(TimeStampedModel)
+- Scope · class · L605-L608 — class Scope(models.TextChoices)
+- Meta · class · L635-L692 — class Meta
+- __str__ · method · L694-L695 — def __str__(self) -> str

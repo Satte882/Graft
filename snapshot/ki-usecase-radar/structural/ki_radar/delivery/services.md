@@ -1,0 +1,27 @@
+# ki_radar/delivery/services.py
+
+- latest_final_approval · function · L58-L66 — def latest_final_approval(use_case: UseCase) -> ApprovalDecision | None
+- current_delivery_package · function · L69-L72 — def current_delivery_package(use_case: UseCase) -> DeliveryPackage | None
+- current_handed_over_package · function · L75-L81 — def current_handed_over_package(use_case: UseCase) -> DeliveryPackage | None
+- delivery_eligibility · function · L84-L90 — def delivery_eligibility(use_case: UseCase) -> tuple[bool, str, ApprovalDecision | None]
+- _iso · function · L93-L94 — def _iso(value: datetime | None) -> str
+- _display_name · function · L97-L101 — def _display_name(user) -> str
+- _source_entry · function · L104-L113 — def _source_entry(source, *, version=None) -> dict[str, str | int | None]
+- _field_source · function · L116-L125 — def _field_source(*, kind: str, label: str, source, field: str, value=None) -> dict
+- _origin_context · function · L128-L133 — def _origin_context(use_case: UseCase)
+- build_delivery_field_sources · function · L136-L214 — def build_delivery_field_sources(use_case: UseCase) -> dict[str, dict]
+- build_source_manifest · function · L217-L248 — def build_source_manifest(use_case: UseCase, decision: ApprovalDecision) -> dict
+- _current_source_objects · function · L251-L259 — def _current_source_objects(use_case: UseCase) -> dict
+- delivery_source_differences · function · L262-L287 — def delivery_source_differences(package: DeliveryPackage) -> list[dict]
+- technical_owner_source_state · function · L290-L310 — def technical_owner_source_state(package: DeliveryPackage) -> dict | None
+- refresh_technical_owner_source_snapshot · function · L313-L334 — def refresh_technical_owner_source_snapshot( package: DeliveryPackage, *, adoption: str, ) -> None
+- _architecture_artifacts_payload · function · L337-L373 — def _architecture_artifacts_payload( use_case: UseCase, decision: ApprovalDecision, ) -> dict[str, str]
+- build_initial_delivery_data · function · L376-L490 — def build_initial_delivery_data( use_case: UseCase, decision: ApprovalDecision, ) -> dict[str, str]
+- _create_section_reviews · function · L493-L505 — def _create_section_reviews(package: DeliveryPackage, manifest: dict) -> None
+- create_delivery_package · function · L509-L550 — def create_delivery_package( *, use_case: UseCase, actor, use_evidence_mapper: bool | None = None, ) -> DeliveryPackage
+- refresh_delivery_package_mapping · function · L554-L562 — def refresh_delivery_package_mapping(package: DeliveryPackage)
+- reset_section_reviews · function · L566-L582 — def reset_section_reviews(package: DeliveryPackage, section_keys: set[str]) -> None
+- review_delivery_section · function · L586-L696 — def review_delivery_section( *, package: DeliveryPackage, section_key: str, action: str, actor, note: str = "", role_collapse_reason: str = "", ) -> DeliverySectionReview
+- resolve_technical_owner_source_change · function · L700-L761 — def resolve_technical_owner_source_change( *, package: DeliveryPackage, action: str, rationale: str, actor, ) -> DeliveryRoleSourceDecision
+- mark_package_ready · function · L765-L775 — def mark_package_ready(package: DeliveryPackage) -> None
+- hand_over_package · function · L779-L793 — def hand_over_package(package: DeliveryPackage, actor) -> None

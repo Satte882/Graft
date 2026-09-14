@@ -1,0 +1,21 @@
+# tests/test_block4_completion.py
+
+- FakeResponse · class · L33-L47 — class FakeResponse
+- __init__ · method · L34-L35 — def __init__(self, payload: object)
+- __enter__ · method · L37-L38 — def __enter__(self)
+- __exit__ · method · L40-L41 — def __exit__(self, exc_type, exc, traceback)
+- read · method · L43-L47 — def read(self, size=-1) -> bytes
+- _dataset · function · L50-L51 — def _dataset() -> dict
+- _case · function · L54-L55 — def _case(name: str) -> dict
+- _completed_session · function · L58-L74 — def _completed_session(owner, case: dict) -> CaptureSession
+- _provider_result · function · L77-L84 — def _provider_result(payload: object) -> OpenRouterResult
+- test_real_demo_analysis_uses_frozen_catalog_when_active_version_changes · function · L89-L107 — def test_real_demo_analysis_uses_frozen_catalog_when_active_version_changes( owner, monkeypatch, )
+- test_prompt_injection_cannot_escape_catalog_whitelist_or_create_domain_objects · function · L112-L156 — def test_prompt_injection_cannot_escape_catalog_whitelist_or_create_domain_objects( owner, monkeypatch, )
+- test_v1_rejects_non_applicable_field_types_for_whitelisted_text_target · function · L171-L210 — def test_v1_rejects_non_applicable_field_types_for_whitelisted_text_target( owner, monkeypatch, field_type, suggested_value, )
+- test_failed_empty_response_preserves_capture_and_previous_success · function · L215-L248 — def test_failed_empty_response_preserves_capture_and_previous_success( owner, monkeypatch, )
+- empty_response · function · L230-L231 — def empty_response(**kwargs)
+- test_shared_provider_path_requires_api_key · function · L255-L263 — def test_shared_provider_path_requires_api_key()
+- test_shared_provider_path_classifies_http_failures · function · L274-L299 — def test_shared_provider_path_classifies_http_failures( monkeypatch, status_code, expected_code, )
+- raise_http_error · function · L287-L288 — def raise_http_error(*args, **kwargs)
+- test_shared_provider_path_classifies_network_failure · function · L306-L319 — def test_shared_provider_path_classifies_network_failure(monkeypatch)
+- raise_network_error · function · L307-L308 — def raise_network_error(*args, **kwargs)

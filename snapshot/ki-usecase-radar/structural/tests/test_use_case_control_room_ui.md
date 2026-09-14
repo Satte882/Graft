@@ -1,0 +1,15 @@
+# tests/test_use_case_control_room_ui.py
+
+- read_repo_text · function · L6-L7 — def read_repo_text(*parts)
+- test_use_case_detail_composes_shared_work_object_patterns · function · L20-L32 — def test_use_case_detail_composes_shared_work_object_patterns()
+- test_decision_workspace_hierarchy_places_lifecycle_and_decisions_before_secondary_information · function · L35-L51 — def test_decision_workspace_hierarchy_places_lifecycle_and_decisions_before_secondary_information()
+- test_all_existing_use_case_actions_remain_reachable_with_existing_permissions · function · L54-L77 — def test_all_existing_use_case_actions_remain_reachable_with_existing_permissions()
+- test_section_actions_own_edit_paths_without_reintroducing_readiness_hard_stops · function · L80-L109 — def test_section_actions_own_edit_paths_without_reintroducing_readiness_hard_stops()
+- test_next_action_is_owned_once_by_decision_state_on_migrated_work_object · function · L112-L123 — def test_next_action_is_owned_once_by_decision_state_on_migrated_work_object()
+- test_global_lifecycle_requires_real_work_context_instead_of_list_fallbacks · function · L126-L134 — def test_global_lifecycle_requires_real_work_context_instead_of_list_fallbacks()
+- test_lifecycle_navigation_is_scroll_free_on_desktop_and_compact_on_mobile · function · L137-L153 — def test_lifecycle_navigation_is_scroll_free_on_desktop_and_compact_on_mobile()
+- test_blocker_links_and_second_approval_remain_true_links · function · L156-L162 — def test_blocker_links_and_second_approval_remain_true_links()
+- test_gate_b_work_object_patterns_are_shared_primitives · function · L165-L173 — def test_gate_b_work_object_patterns_are_shared_primitives()
+- test_control_room_css_uses_semantic_tokens_without_new_raw_colors · function · L176-L186 — def test_control_room_css_uses_semantic_tokens_without_new_raw_colors()
+- test_readme_describes_contextual_lifecycle_instead_of_permanent_journey · function · L189-L192 — def test_readme_describes_contextual_lifecycle_instead_of_permanent_journey()
+- test_issue_410_keeps_active_work_visible_and_secondary_detail_collapsible · function · L195-L200 — def test_issue_410_keeps_active_work_visible_and_secondary_detail_collapsible()

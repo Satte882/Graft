@@ -1,0 +1,17 @@
+# tests/test_outcome_workspace_actions.py
+
+- _use_case · function · L21-L36 — def _use_case(owner, business_unit, *, status=UseCase.Status.PILOT)
+- _final_approval · function · L39-L67 — def _final_approval(use_case, coordinator)
+- _package · function · L70-L80 — def _package(use_case, coordinator, *, external_url="", status=DeliveryPackage.Status.HANDED_OVER)
+- test_handover_has_its_own_workspace_context · function · L84-L100 — def test_handover_has_its_own_workspace_context(client, coordinator, owner, business_unit)
+- test_inconsistent_handover_workspace_action_opens_blocked_package · function · L104-L124 — def test_inconsistent_handover_workspace_action_opens_blocked_package( client, coordinator, owner, business_unit, )
+- test_running_pilot_opens_real_external_delivery_link · function · L128-L153 — def test_running_pilot_opens_real_external_delivery_link( client, coordinator, owner, business_unit, )
+- test_invalid_current_handover_blocks_external_pilot_action · function · L157-L180 — def test_invalid_current_handover_blocks_external_pilot_action( client, coordinator, owner, business_unit, )
+- test_handed_over_pilot_without_external_link_has_intentional_empty_state · function · L184-L204 — def test_handed_over_pilot_without_external_link_has_intentional_empty_state( client, coordinator, owner, business_unit, )
+- test_effect_deep_link_targets_existing_metric_fields · function · L208-L222 — def test_effect_deep_link_targets_existing_metric_fields(client, owner, business_unit)
+- test_go_live_action_uses_existing_review_form · function · L226-L253 — def test_go_live_action_uses_existing_review_form(client, coordinator, owner, business_unit)
+- test_invalid_current_handover_is_not_rechecked_by_go_live_service · function · L257-L283 — def test_invalid_current_handover_is_not_rechecked_by_go_live_service( client, coordinator, owner, business_unit, )
+- test_operation_without_due_review_renders_neutral_status · function · L287-L307 — def test_operation_without_due_review_renders_neutral_status( client, coordinator, owner, business_unit, )
+- test_due_operation_review_and_closure_use_existing_review_form · function · L311-L344 — def test_due_operation_review_and_closure_use_existing_review_form( client, coordinator, owner, business_unit, )
+- test_sidebar_uses_compact_account_menu · function · L348-L361 — def test_sidebar_uses_compact_account_menu(client, technical_admin, owner, business_unit)
+- test_outcome_workspace_css_preserves_readable_hierarchy · function · L364-L372 — def test_outcome_workspace_css_preserves_readable_hierarchy()

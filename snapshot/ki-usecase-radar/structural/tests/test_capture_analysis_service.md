@@ -1,0 +1,17 @@
+# tests/test_capture_analysis_service.py
+
+- _completed_session · function · L23-L37 — def _completed_session(owner, capture_type=CaptureSession.CaptureType.VALUE_STREAM)
+- test_prepare_uses_frozen_catalog_and_minimized_input · function · L42-L56 — def test_prepare_uses_frozen_catalog_and_minimized_input(owner, monkeypatch)
+- test_prepare_rejects_non_completed_session_without_consuming_quota · function · L61-L71 — def test_prepare_rejects_non_completed_session_without_consuming_quota(owner)
+- test_input_limit_is_checked_before_quota_reservation · function · L76-L83 — def test_input_limit_is_checked_before_quota_reservation(owner)
+- test_prepare_reserves_context_user_and_global_quota · function · L88-L94 — def test_prepare_reserves_context_user_and_global_quota(owner)
+- test_context_quota_rejects_second_source_after_first_call · function · L99-L114 — def test_context_quota_rejects_second_source_after_first_call(owner)
+- test_same_source_cannot_start_twice_in_parallel · function · L119-L127 — def test_same_source_cannot_start_twice_in_parallel(owner)
+- test_provider_failure_marks_analysis_failed_without_retry · function · L132-L151 — def test_provider_failure_marks_analysis_failed_without_retry(owner, monkeypatch)
+- fail_provider · function · L137-L140 — def fail_provider(**kwargs)
+- test_provider_payload_is_json_object_and_metadata_is_returned · function · L156-L194 — def test_provider_payload_is_json_object_and_metadata_is_returned(owner, monkeypatch)
+- fake_request_openrouter · function · L169-L177 — def fake_request_openrouter(**kwargs)
+- test_invalid_provider_json_marks_analysis_failed · function · L199-L219 — def test_invalid_provider_json_marks_analysis_failed(owner, monkeypatch)
+- test_truncated_provider_output_has_explicit_error_code · function · L224-L246 — def test_truncated_provider_output_has_explicit_error_code(owner, monkeypatch)
+- test_schema_provider_error_is_preserved_on_analysis · function · L251-L269 — def test_schema_provider_error_is_preserved_on_analysis(owner, monkeypatch)
+- fail_provider · function · L255-L259 — def fail_provider(**kwargs)

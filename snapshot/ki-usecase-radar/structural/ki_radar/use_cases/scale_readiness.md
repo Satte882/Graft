@@ -1,0 +1,28 @@
+# ki_radar/use_cases/scale_readiness.py
+
+- ScaleReadinessFinding · class · L53-L57 — class ScaleReadinessFinding
+- ScaleReadinessDimension · class · L61-L65 — class ScaleReadinessDimension
+- ScaleReadinessResult · class · L69-L90 — class ScaleReadinessResult
+- blockers · method · L77-L78 — def blockers(self) -> tuple[ScaleReadinessFinding, ...]
+- conditions · method · L81-L82 — def conditions(self) -> tuple[ScaleReadinessFinding, ...]
+- state_label · method · L85-L90 — def state_label(self) -> str
+- extract_scale_evidence · function · L93-L94 — def extract_scale_evidence(data: dict) -> dict
+- scale_evidence_from_mapping · function · L97-L100 — def scale_evidence_from_mapping(data: Mapping | None) -> dict
+- _text · function · L103-L104 — def _text(value) -> str
+- _bool · function · L107-L110 — def _bool(value) -> bool
+- _decimal · function · L113-L119 — def _decimal(value) -> Decimal | None
+- _iso · function · L122-L126 — def _iso(value) -> str
+- _display_name · function · L129-L133 — def _display_name(user) -> str
+- _add · function · L136-L150 — def _add( findings: list[ScaleReadinessFinding], code: str, dimension: str, severity: str, message: str, ) -> None
+- _minimum_tailoring · function · L153-L169 — def _minimum_tailoring(use_case: UseCase) -> str
+- _add_governance_findings · function · L172-L205 — def _add_governance_findings( use_case: UseCase, findings: list[ScaleReadinessFinding], ) -> None
+- _evaluate_tailoring · function · L208-L235 — def _evaluate_tailoring( use_case: UseCase, data: dict, findings: list[ScaleReadinessFinding], ) -> str
+- _evaluate_pilot · function · L238-L261 — def _evaluate_pilot( use_case: UseCase, data: dict, findings: list[ScaleReadinessFinding], ) -> None
+- _evaluate_ml_score · function · L264-L356 — def _evaluate_ml_score( data: dict, findings: list[ScaleReadinessFinding], ) -> Decimal | None
+- _evaluate_deployment · function · L359-L387 — def _evaluate_deployment( use_case: UseCase, data: dict, findings: list[ScaleReadinessFinding], ) -> None
+- _evaluate_operations · function · L390-L428 — def _evaluate_operations( tailoring: str, data: dict, findings: list[ScaleReadinessFinding], ) -> None
+- _evaluate_responsibility · function · L431-L467 — def _evaluate_responsibility( use_case: UseCase, tailoring: str, data: dict, findings: list[ScaleReadinessFinding], ) -> None
+- evaluate_scale_readiness · function · L470-L523 — def evaluate_scale_readiness( use_case: UseCase, evidence: Mapping | None = None, ) -> ScaleReadinessResult
+- build_scale_readiness_snapshot · function · L526-L608 — def build_scale_readiness_snapshot( use_case: UseCase, evidence: Mapping | None, result: ScaleReadinessResult, ) -> dict
+- _apply_status_transition_with_scale_readiness · function · L614-L640 — def _apply_status_transition_with_scale_readiness( *, use_case: UseCase, target_status: str, actor, pilot_start=None, allow_early_go_live_exception: bool = False, scale_evidence: Mapping | None = None, )
+- install · function · L643-L651 — def install() -> None

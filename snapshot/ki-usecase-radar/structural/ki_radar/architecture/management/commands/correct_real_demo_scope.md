@@ -1,0 +1,23 @@
+# ki_radar/architecture/management/commands/correct_real_demo_scope.py
+
+- Command · class · L23-L421 — class Command(BaseCommand)
+- add_arguments · method · L26-L46 — def add_arguments(self, parser)
+- handle · method · L48-L73 — def handle(self, *args, **options)
+- _inspect · method · L75-L93 — def _inspect(self) -> None
+- _execute · method · L95-L198 — def _execute( self, plan: dict[str, Any], *, apply: bool, audit_path: Path | None, ) -> None
+- _validate_inventory · method · L200-L210 — def _validate_inventory(self, rows: list[ValueStream], plan: dict[str, Any]) -> None
+- _find_target · method · L213-L217 — def _find_target(rows: list[ValueStream], target_id: str) -> ValueStream
+- _validate_current_values · method · L220-L233 — def _validate_current_values(target, target_plan, expected_updated_at) -> None
+- _validate_plan · method · L235-L297 — def _validate_plan(self, plan: dict[str, Any]) -> dict[str, Any]
+- _absolute_path · method · L300-L303 — def _absolute_path(path: Path | None, label: str) -> Path
+- _read_plan · method · L306-L315 — def _read_plan(path: Path) -> dict[str, Any]
+- _inventory · method · L317-L319 — def _inventory(self) -> list[dict[str, Any]]
+- _serialize · method · L322-L329 — def _serialize(stream: ValueStream) -> dict[str, Any]
+- _required_text · method · L332-L336 — def _required_text(mapping: dict[str, Any], field: str) -> str
+- _uuid · method · L339-L343 — def _uuid(value: str, field: str) -> str
+- _public_summary · method · L345-L356 — def _public_summary(self, plan, before, after, status) -> dict[str, Any]
+- _hashed_scope · method · L359-L364 — def _hashed_scope(value: dict[str, Any]) -> dict[str, str]
+- _audit_payload · method · L367-L382 — def _audit_payload(plan, *, status, before, after, inventory, changed_rows)
+- _write_new_audit · method · L384-L390 — def _write_new_audit(self, path: Path, payload: dict[str, Any]) -> None
+- _replace_audit · method · L392-L411 — def _replace_audit(self, path: Path, payload: dict[str, Any]) -> None
+- _audit_markdown · method · L414-L421 — def _audit_markdown(payload: dict[str, Any]) -> str

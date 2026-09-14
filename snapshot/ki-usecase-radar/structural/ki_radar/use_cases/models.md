@@ -1,0 +1,37 @@
+# ki_radar/use_cases/models.py
+
+- UseCaseCounter · class · L16-L20 — class UseCaseCounter(models.Model)
+- __str__ · method · L19-L20 — def __str__(self) -> str
+- UseCase · class · L23-L319 — class UseCase(TimeStampedModel)
+- Status · class · L24-L29 — class Status(models.TextChoices)
+- DecisionStatus · class · L31-L40 — class DecisionStatus(models.TextChoices)
+- Level · class · L42-L45 — class Level(models.TextChoices)
+- Priority · class · L47-L51 — class Priority(models.TextChoices)
+- SolutionType · class · L53-L61 — class SolutionType(models.TextChoices)
+- HostingType · class · L63-L67 — class HostingType(models.TextChoices)
+- MetricType · class · L69-L75 — class MetricType(models.TextChoices)
+- MetricDirection · class · L77-L79 — class MetricDirection(models.TextChoices)
+- MetricResult · class · L81-L85 — class MetricResult(models.TextChoices)
+- Meta · class · L237-L243 — class Meta
+- __str__ · method · L245-L246 — def __str__(self) -> str
+- save · method · L248-L266 — def save(self, *args, **kwargs)
+- get_absolute_url · method · L268-L269 — def get_absolute_url(self)
+- metric_result · method · L272-L281 — def metric_result(self) -> str
+- metric_result_label · method · L284-L301 — def metric_result_label(self) -> str
+- metric_delta · method · L304-L307 — def metric_delta(self) -> Decimal | None
+- recommendation · method · L310-L319 — def recommendation(self) -> str
+- DecisionAssessment · class · L322-L421 — class DecisionAssessment(TimeStampedModel)
+- EvidenceQuality · class · L323-L328 — class EvidenceQuality(models.IntegerChoices)
+- ConfidenceFactor · class · L330-L334 — class ConfidenceFactor(models.IntegerChoices)
+- Recommendation · class · L336-L343 — class Recommendation(models.TextChoices)
+- Meta · class · L374-L381 — class Meta
+- __str__ · method · L383-L384 — def __str__(self) -> str
+- clean · method · L386-L399 — def clean(self)
+- confidence_level · method · L402-L417 — def confidence_level(self) -> str
+- confidence_label · method · L420-L421 — def confidence_label(self) -> str
+- ApprovalDecision · class · L424-L499 — class ApprovalDecision(TimeStampedModel)
+- Meta · class · L479-L480 — class Meta
+- __str__ · method · L482-L483 — def __str__(self) -> str
+- is_pending_second_approval · method · L486-L491 — def is_pending_second_approval(self) -> bool
+- is_returned_from_second_approval · method · L494-L495 — def is_returned_from_second_approval(self) -> bool
+- is_final · method · L498-L499 — def is_final(self) -> bool

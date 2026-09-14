@@ -1,0 +1,15 @@
+# tests/test_capture_analysis_views.py
+
+- _session · function · L14-L27 — def _session(owner, *, status=CaptureSession.Status.COMPLETED)
+- _analysis · function · L30-L46 — def _analysis(session, owner, *, status=CaptureAnalysis.Status.SUCCESS, error_code="")
+- test_review_get_never_starts_analysis_and_only_completed_session_has_action · function · L50-L73 — def test_review_get_never_starts_analysis_and_only_completed_session_has_action( client, owner, monkeypatch )
+- unexpected_call · function · L57-L59 — def unexpected_call(**kwargs)
+- test_analysis_endpoint_requires_post · function · L77-L83 — def test_analysis_endpoint_requires_post(client, owner)
+- test_explicit_analysis_post_redirects_to_new_preview · function · L87-L100 — def test_explicit_analysis_post_redirects_to_new_preview(client, owner, monkeypatch)
+- test_analysis_error_returns_to_review_and_preserves_existing_success · function · L104-L124 — def test_analysis_error_returns_to_review_and_preserves_existing_success( client, owner, monkeypatch )
+- fail · function · L110-L111 — def fail(**kwargs)
+- test_preview_shows_source_uncertainty_and_no_block5_actions · function · L128-L155 — def test_preview_shows_source_uncertainty_and_no_block5_actions(client, owner)
+- test_preview_labels_estimated_llm_cost_in_usd · function · L159-L175 — def test_preview_labels_estimated_llm_cost_in_usd(client, owner)
+- test_failed_preview_has_controlled_error_without_hiding_capture · function · L179-L197 — def test_failed_preview_has_controlled_error_without_hiding_capture(client, owner)
+- test_foreign_session_and_analysis_are_not_exposed · function · L201-L217 — def test_foreign_session_and_analysis_are_not_exposed(client, owner, other_owner)
+- test_unsupported_frozen_catalog_is_not_analyzable_and_direct_post_is_controlled · function · L221-L234 — def test_unsupported_frozen_catalog_is_not_analyzable_and_direct_post_is_controlled(client, owner)

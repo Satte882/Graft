@@ -1,0 +1,23 @@
+# ki_radar/governance/services.py
+
+- ReviewDefinition · class · L11-L22 — class ReviewDefinition
+- key · method · L21-L22 — def key(self) -> str
+- GovernanceReviewState · class · L26-L66 — class GovernanceReviewState
+- completed · method · L33-L38 — def completed(self) -> bool
+- failed · method · L41-L47 — def failed(self) -> bool
+- conditionally_passed · method · L50-L56 — def conditionally_passed(self) -> bool
+- blocker · method · L59-L66 — def blocker(self) -> str
+- GovernanceStatus · class · L70-L84 — class GovernanceStatus
+- has_screening · method · L75-L76 — def has_screening(self) -> bool
+- required_reviews · method · L79-L80 — def required_reviews(self) -> tuple[GovernanceReviewState, ...]
+- incomplete_required_reviews · method · L83-L84 — def incomplete_required_reviews(self) -> tuple[GovernanceReviewState, ...]
+- review_definition · function · L119-L120 — def review_definition(review_type: str) -> ReviewDefinition
+- latest_review_for_screening · function · L123-L136 — def latest_review_for_screening( *, use_case: UseCase, review_type: str, screening: GovernanceAssessment, ) -> GovernanceReview | None
+- review_history · function · L139-L142 — def review_history(*, use_case: UseCase, review_type: str)
+- governance_review_evidence · function · L145-L152 — def governance_review_evidence(use_case: UseCase) -> tuple[GovernanceReview, ...]
+- current_governance_status · function · L155-L202 — def current_governance_status(use_case: UseCase) -> GovernanceStatus
+- required_governance_blockers · function · L205-L210 — def required_governance_blockers(use_case: UseCase) -> list[str]
+- failed_required_governance_reviews · function · L213-L218 — def failed_required_governance_reviews(use_case: UseCase) -> list[str]
+- open_required_governance_warnings · function · L221-L226 — def open_required_governance_warnings(use_case: UseCase) -> list[str]
+- create_screening_review_artifacts · function · L230-L256 — def create_screening_review_artifacts( *, assessment: GovernanceAssessment, actor, ) -> tuple[GovernanceReview, ...]
+- sync_completion_from_review · function · L259-L268 — def sync_completion_from_review( *, use_case: UseCase, review: GovernanceReview, actor, ) -> None

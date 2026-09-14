@@ -1,0 +1,15 @@
+# ki_radar/core/templatetags/workflow_tags.py
+
+- _aggregate_state · function · L48-L62 — def _aggregate_state(raw_steps, keys)
+- _is_outcome_workspace · function · L65-L73 — def _is_outcome_workspace(journey, request)
+- _workflow_definition · function · L76-L79 — def _workflow_definition(journey, request)
+- _selection_route_states · function · L82-L158 — def _selection_route_states(request)
+- _outcome_current_step · function · L161-L163 — def _outcome_current_step(request)
+- _outcome_route_states · function · L166-L170 — def _outcome_route_states(request)
+- _outcome_link · function · L173-L177 — def _outcome_link(request, stage)
+- _global_links · function · L180-L195 — def _global_links(request)
+- _links · function · L198-L215 — def _links(journey, request)
+- _contextual_step · function · L218-L245 — def _contextual_step(raw_steps, workflow_key)
+- _local_label · function · L248-L259 — def _local_label(workflow_key, default_label, raw_steps, contextual_step)
+- workflow_steps · function · L263-L297 — def workflow_steps(journey, request)
+- local_step_group · function · L301-L308 — def local_step_group(step_key)

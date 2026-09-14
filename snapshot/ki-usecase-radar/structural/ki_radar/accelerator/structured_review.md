@@ -1,0 +1,33 @@
+# ki_radar/accelerator/structured_review.py
+
+- StructuredReviewError · class · L44-L45 — class StructuredReviewError(ValueError)
+- StructuredReviewAction · class · L48-L51 — class StructuredReviewAction(StrEnum)
+- StructuredReviewDecision · class · L55-L59 — class StructuredReviewDecision
+- _sha256 · function · L118-L119 — def _sha256(value: str) -> str
+- _json_value · function · L122-L133 — def _json_value(value: Any) -> Any
+- _target_for_session · function · L136-L141 — def _target_for_session(session: CaptureSession)
+- _can_edit · function · L144-L149 — def _can_edit(*, actor, session: CaptureSession, target) -> bool
+- _assert_analysis_reviewable · function · L152-L165 — def _assert_analysis_reviewable(*, analysis: CaptureAnalysis, actor)
+- _source_snapshot · function · L168-L179 — def _source_snapshot( *, analysis: CaptureAnalysis, suggestions: list[CaptureFieldSuggestion], ) -> dict[str, Any]
+- _normalize_suggestion · function · L182-L206 — def _normalize_suggestion( suggestion: CaptureFieldSuggestion, spec: StructuredFieldSpec, ) -> dict[str, Any]
+- _status_from_meta · function · L209-L215 — def _status_from_meta(field_meta: dict[str, dict[str, Any]]) -> str
+- _metric_items · function · L218-L255 — def _metric_items( *, batch: StructuredAdoptionBatch, analysis: CaptureAnalysis, target: UseCase, suggestions: list[CaptureFieldSuggestion], ) -> list[StructuredAdoptionItem]
+- _grouped_items · function · L258-L322 — def _grouped_items( *, batch: StructuredAdoptionBatch, analysis: CaptureAnalysis, suggestions: list[CaptureFieldSuggestion], candidate_kind: StructuredCandidateKind, ) -> list[StructuredAdoptionItem]
+- _supported_suggestions · function · L325-L342 — def _supported_suggestions(analysis: CaptureAnalysis) -> list[CaptureFieldSuggestion]
+- _seal_batch · function · L345-L380 — def _seal_batch(batch: StructuredAdoptionBatch) -> None
+- _record_audit · function · L383-L412 — def _record_audit( *, batch: StructuredAdoptionBatch, actor, event: str, outcome: str, item: StructuredAdoptionItem | None = None, details: dict[str, Any] | None = None, ) -> None
+- get_or_create_review_batch · function · L416-L498 — def get_or_create_review_batch(*, analysis_id: UUID, actor) -> StructuredAdoptionBatch
+- _assert_batch_editable · function · L501-L518 — def _assert_batch_editable(*, batch: StructuredAdoptionBatch, actor)
+- _normalize_edited_metric · function · L521-L529 — def _normalize_edited_metric(item: StructuredAdoptionItem, edited_value: Any) -> Any
+- _normalize_edited_fields · function · L532-L562 — def _normalize_edited_fields( *, item: StructuredAdoptionItem, edited_fields: dict[str, Any], ) -> dict[str, Any]
+- _validate_stage_fields · function · L565-L572 — def _validate_stage_fields(*, target: ValueStream, fields: dict[str, Any]) -> None
+- _set_process_reference · function · L575-L613 — def _set_process_reference( *, item: StructuredAdoptionItem, target: ValueStream, reference_value: str, ) -> None
+- _validate_process_fields · function · L616-L623 — def _validate_process_fields(*, fields: dict[str, Any]) -> None
+- decide_review_item · function · L627-L742 — def decide_review_item( *, batch_id: UUID, item_id: UUID, actor, action: StructuredReviewAction, edited_value: Any = None, edited_fields: dict[str, Any] | None = None, stage_reference: str = "", ) -> StructuredReviewDecision
+- review_batch_ready · function · L745-L768 — def review_batch_ready(batch: StructuredAdoptionBatch) -> bool
+- commit_review_batch · function · L771-L785 — def commit_review_batch(*, batch_id: UUID, actor)
+- _display · function · L788-L795 — def _display(value: Any) -> str
+- _field_rows · function · L798-L844 — def _field_rows(item: StructuredAdoptionItem) -> list[dict[str, str]]
+- _effective_source · function · L847-L856 — def _effective_source(item: StructuredAdoptionItem) -> str
+- build_review_context · function · L859-L984 — def build_review_context(batch: StructuredAdoptionBatch) -> dict[str, Any]
+- item_sort_key · function · L903-L913 — def item_sort_key(item: StructuredAdoptionItem)

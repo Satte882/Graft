@@ -1,0 +1,16 @@
+# tests/test_reviews.py
+
+- use_case · function · L18-L26 — def use_case(owner, business_unit)
+- create_final_approval · function · L29-L57 — def create_final_approval(use_case, coordinator)
+- prepare_failed_pilot · function · L60-L94 — def prepare_failed_pilot(use_case, coordinator)
+- _scale_evidence · function · L97-L118 — def _scale_evidence()
+- test_only_coordinator_can_open_review_form · function · L122-L126 — def test_only_coordinator_can_open_review_form(client, owner, coordinator, use_case)
+- test_review_form_uses_german_decision_labels · function · L130-L136 — def test_review_form_uses_german_decision_labels(use_case)
+- test_review_form_renders_date_inputs_in_browser_format · function · L140-L145 — def test_review_form_renders_date_inputs_in_browser_format(use_case)
+- test_review_form_preselects_next_decision · function · L149-L153 — def test_review_form_preselects_next_decision(use_case)
+- test_review_form_preselects_operation_continuation · function · L157-L164 — def test_review_form_preselects_operation_continuation(use_case)
+- test_bound_review_form_keeps_submitted_decision · function · L168-L184 — def test_bound_review_form_keeps_submitted_decision(use_case)
+- test_continue_review_keeps_status · function · L188-L206 — def test_continue_review_keeps_status(client, coordinator, use_case)
+- test_review_can_supply_required_review_date_for_pilot_transition · function · L210-L263 — def test_review_can_supply_required_review_date_for_pilot_transition(coordinator, use_case)
+- test_failed_pilot_cannot_go_live_without_confirmed_exception · function · L267-L290 — def test_failed_pilot_cannot_go_live_without_confirmed_exception(coordinator, use_case)
+- test_confirmed_go_live_exception_is_persisted · function · L294-L317 — def test_confirmed_go_live_exception_is_persisted(coordinator, use_case)

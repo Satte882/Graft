@@ -1,0 +1,33 @@
+# ki_radar/use_cases/origin_consistency.py
+
+- OriginConsistencyError · class · L147-L150 — class OriginConsistencyError(RuntimeError)
+- __init__ · method · L148-L150 — def __init__(self, message: str, *, code: str) -> None
+- OriginConsistencyContextError · class · L153-L154 — class OriginConsistencyContextError(OriginConsistencyError)
+- OriginConsistencyValidationError · class · L157-L158 — class OriginConsistencyValidationError(OriginConsistencyError)
+- OriginConsistencyEligibility · class · L162-L167 — class OriginConsistencyEligibility
+- OriginConsistencySource · class · L171-L185 — class OriginConsistencySource
+- prompt_payload · method · L178-L185 — def prompt_payload(self) -> dict[str, str]
+- OriginConsistencyContext · class · L189-L197 — class OriginConsistencyContext
+- source_refs · method · L196-L197 — def source_refs(self) -> frozenset[tuple[str, str]]
+- OriginConsistencyResult · class · L201-L206 — class OriginConsistencyResult
+- _clean · function · L209-L210 — def _clean(value: object) -> str
+- _iso · function · L213-L214 — def _iso(value) -> str
+- _canonical_hash · function · L217-L224 — def _canonical_hash(payload: dict[str, Any]) -> str
+- _origin_for · function · L227-L231 — def _origin_for(use_case: UseCase) -> UseCaseOrigin | None
+- _snapshot_option · function · L234-L244 — def _snapshot_option( decision: SolutionSelectionDecision, option_id: object, ) -> dict[str, Any] | None
+- _snapshot_value · function · L247-L251 — def _snapshot_value(origin: UseCaseOrigin, field_name: str) -> str
+- _decision_matches_origin · function · L254-L270 — def _decision_matches_origin( decision: SolutionSelectionDecision, origin: UseCaseOrigin, ) -> bool
+- _resolved_decision · function · L273-L288 — def _resolved_decision(origin: UseCaseOrigin) -> tuple[SolutionSelectionDecision | None, str]
+- origin_consistency_eligibility · function · L291-L362 — def origin_consistency_eligibility(use_case: UseCase) -> OriginConsistencyEligibility
+- _origin_version · function · L365-L373 — def _origin_version(origin: UseCaseOrigin, field_name: str) -> str
+- _append_source · function · L376-L396 — def _append_source( sources: list[OriginConsistencySource], *, source_id: str, group: str, label: str, version: str, value: object, ) -> None
+- build_origin_consistency_context · function · L399-L497 — def build_origin_consistency_context(use_case: UseCase) -> OriginConsistencyContext
+- _messages · function · L500-L507 — def _messages(context: OriginConsistencyContext) -> list[dict[str, str]]
+- _require_exact_keys · function · L510-L515 — def _require_exact_keys(payload: dict[str, Any], expected: set[str]) -> None
+- _require_text · function · L518-L530 — def _require_text(value: object, *, max_length: int) -> str
+- validate_origin_consistency_payload · function · L533-L666 — def validate_origin_consistency_payload( payload: object, *, context: OriginConsistencyContext, ) -> tuple[str, tuple[dict[str, Any], ...], tuple[str, ...]]
+- _fresh_use_case · function · L669-L673 — def _fresh_use_case(use_case: UseCase) -> UseCase
+- source_hash_is_current · function · L676-L681 — def source_hash_is_current(*, use_case: UseCase, expected_hash: str) -> bool
+- log_origin_consistency_event · function · L684-L709 — def log_origin_consistency_event( event: str, *, use_case: UseCase, actor, run_id: object | None = None, result: str = "", finding_count: int | None = None, error_code: str = "", helpful: bool | None = None, regenerated: bool | None = None, ) -> None
+- origin_consistency_run_for_actor · function · L712-L722 — def origin_consistency_run_for_actor(*, use_case: UseCase, actor, run_id: object)
+- generate_origin_consistency_review · function · L725-L808 — def generate_origin_consistency_review( *, use_case: UseCase, actor, regenerated: bool = False, ) -> OriginConsistencyResult

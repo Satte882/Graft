@@ -1,0 +1,3 @@
+# tests/test_block7_loading_feedback.py
+
+- test_solution_generation_submit_has_local_progress_feedback_and_double_submit_guard · function · L4-L18 — def test_solution_generation_submit_has_local_progress_feedback_and_double_submit_guard()

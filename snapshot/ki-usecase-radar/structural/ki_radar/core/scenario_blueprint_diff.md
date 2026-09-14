@@ -1,0 +1,27 @@
+# ki_radar/core/scenario_blueprint_diff.py
+
+- DiffStatus · class · L26-L29 — class DiffStatus(StrEnum)
+- FieldDifference · class · L33-L36 — class FieldDifference
+- ObjectDifference · class · L40-L44 — class ObjectDifference
+- BlueprintGraphDiff · class · L48-L95 — class BlueprintGraphDiff
+- has_conflicts · method · L55-L56 — def has_conflicts(self) -> bool
+- is_create · method · L59-L60 — def is_create(self) -> bool
+- is_no_change · method · L63-L66 — def is_no_change(self) -> bool
+- can_apply · method · L69-L70 — def can_apply(self) -> bool
+- graph_status · method · L73-L80 — def graph_status(self) -> DiffStatus
+- as_dict · method · L82-L95 — def as_dict(self) -> dict[str, Any]
+- _display · function · L187-L190 — def _display(value: Any) -> Any
+- _model_values · function · L193-L194 — def _model_values(instance: Any, fields: tuple[str, ...]) -> dict[str, Any]
+- _payload_values · function · L197-L198 — def _payload_values(payload: dict[str, Any], fields: tuple[str, ...]) -> dict[str, Any]
+- _compare_values · function · L201-L212 — def _compare_values( current: dict[str, Any], expected: dict[str, Any] ) -> tuple[FieldDifference, ...]
+- _object_diff · function · L215-L226 — def _object_diff( object_type: str, key: str, instance: Any | None, current: dict[str, Any] | None, expected: dict[str, Any], ) -> ObjectDifference
+- _expected_stream · function · L229-L238 — def _expected_stream(resolved: ResolvedBlueprint) -> dict[str, Any]
+- _current_stream · function · L241-L249 — def _current_stream(stream: ValueStream) -> dict[str, Any]
+- _focus_diff · function · L252-L271 — def _focus_diff(stream: ValueStream | None, resolved: ResolvedBlueprint) -> ObjectDifference
+- _expected_use_case · function · L274-L294 — def _expected_use_case(resolved: ResolvedBlueprint) -> dict[str, Any]
+- _current_use_case · function · L297-L315 — def _current_use_case(use_case: UseCase) -> dict[str, Any]
+- _classification_diff · function · L318-L336 — def _classification_diff(use_case: UseCase | None, resolved: ResolvedBlueprint) -> ObjectDifference
+- _forbidden_state_differences · function · L339-L400 — def _forbidden_state_differences( stream: ValueStream | None, process: ProcessAnalysis | None, options: list[SolutionOption], use_case: UseCase | None, ) -> list[ObjectDifference]
+- _append_stage_diffs · function · L403-L424 — def _append_stage_diffs( objects: list[ObjectDifference], stream: ValueStream | None, stream_data: dict[str, Any], ) -> dict[str, ValueStreamStage | None]
+- _append_option_diffs · function · L427-L451 — def _append_option_diffs( objects: list[ObjectDifference], process: ProcessAnalysis | None, option_payloads: list[dict[str, Any]], origin_key: str, ) -> tuple[list[SolutionOption], SolutionOption | None]
+- build_blueprint_diff · function · L454-L555 — def build_blueprint_diff(resolved: ResolvedBlueprint) -> BlueprintGraphDiff

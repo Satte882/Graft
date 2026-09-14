@@ -1,0 +1,26 @@
+# ki_radar/delivery/readiness.py
+
+- ReadinessFinding · class · L14-L18 — class ReadinessFinding
+- DeliveryStatusSnapshot · class · L22-L25 — class DeliveryStatusSnapshot
+- _seconds · function · L290-L292 — def _seconds(match: re.Match[str]) -> float
+- _statements · function · L295-L300 — def _statements(value: str) -> list[str]
+- _has_concrete_match · function · L303-L307 — def _has_concrete_match(value: str, pattern: re.Pattern[str]) -> bool
+- _has_affirmative_match · function · L310-L319 — def _has_affirmative_match( value: str, pattern: re.Pattern[str], negated_pattern: re.Pattern[str], ) -> bool
+- _affirmative_confidence_semantics · function · L322-L324 — def _affirmative_confidence_semantics(statement: str) -> bool
+- _output_semantic_findings · function · L327-L435 — def _output_semantic_findings(confidence_text: str) -> list[ReadinessFinding]
+- _count_value · function · L438-L442 — def _count_value(value: str) -> int
+- _latency_semantic_findings · function · L445-L533 — def _latency_semantic_findings(latency_text: str) -> list[ReadinessFinding]
+- _retention_segments · function · L536-L545 — def _retention_segments(retention_text: str) -> dict[str, str]
+- _retention_semantic_findings · function · L548-L580 — def _retention_semantic_findings(retention_text: str) -> list[ReadinessFinding]
+- _quality_semantic_findings · function · L583-L688 — def _quality_semantic_findings(package: DeliveryPackage) -> list[ReadinessFinding]
+- _text · function · L691-L692 — def _text(value) -> str
+- _field_label · function · L695-L696 — def _field_label(package: DeliveryPackage, field_name: str) -> str
+- _is_generic_placeholder · function · L699-L701 — def _is_generic_placeholder(value: str) -> bool
+- _parse_manifest_time · function · L704-L710 — def _parse_manifest_time(value: str | None) -> datetime | None
+- _source_staleness_findings · function · L713-L776 — def _source_staleness_findings( package: DeliveryPackage, reviews_by_key, ) -> list[ReadinessFinding]
+- evaluate_delivery_readiness · function · L779-L979 — def evaluate_delivery_readiness(package: DeliveryPackage) -> list[ReadinessFinding]
+- blocking_findings · function · L982-L985 — def blocking_findings(package: DeliveryPackage) -> list[ReadinessFinding]
+- delivery_status_snapshot · function · L988-L1011 — def delivery_status_snapshot(package: DeliveryPackage) -> DeliveryStatusSnapshot
+- _legacy_missing_ready_fields · function · L1014-L1064 — def _legacy_missing_ready_fields(package: DeliveryPackage) -> list[str]
+- missing_ready_fields · function · L1067-L1070 — def missing_ready_fields(package: DeliveryPackage) -> list[str]
+- render_delivery_markdown · function · L1073-L1078 — def render_delivery_markdown(package: DeliveryPackage) -> str

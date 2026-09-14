@@ -1,0 +1,27 @@
+# ki_radar/delivery/evidence_snapshot.py
+
+- EvidenceSourceSnapshot · class · L29-L34 — class EvidenceSourceSnapshot
+- EvidenceFact · class · L38-L55 — class EvidenceFact
+- semantic_payload · method · L47-L55 — def semantic_payload(self) -> dict[str, Any]
+- FieldEvidence · class · L59-L66 — class FieldEvidence
+- has_non_empty_evidence · method · L65-L66 — def has_non_empty_evidence(self) -> bool
+- DeliveryEvidenceSnapshot · class · L70-L92 — class DeliveryEvidenceSnapshot
+- field · method · L78-L82 — def field(self, target_field: str) -> FieldEvidence
+- semantic_payload · method · L84-L92 — def semantic_payload(self) -> dict[str, Any]
+- normalize_evidence_value · function · L95-L124 — def normalize_evidence_value(value: Any) -> Any
+- evidence_hash · function · L127-L129 — def evidence_hash(payload: Any) -> str
+- build_delivery_evidence_snapshot · function · L132-L191 — def build_delivery_evidence_snapshot( use_case, *, origin=_AUTO, selection_decision=_AUTO, approval_decision=_AUTO, generated_at: datetime | None = None, ) -> DeliveryEvidenceSnapshot
+- _build_field_evidence · function · L194-L240 — def _build_field_evidence( spec: DeliveryFieldMappingSpec, *, source_context: dict[str, Any], source_metadata: dict[str, EvidenceSourceSnapshot], ) -> FieldEvidence
+- _facts_for_rule · function · L243-L260 — def _facts_for_rule( rule: SourceRule, *, source: Any, metadata: EvidenceSourceSnapshot, ) -> list[EvidenceFact]
+- _rule_is_applicable · function · L263-L269 — def _rule_is_applicable(rule: SourceRule, source_context: dict[str, Any]) -> bool
+- _rule_has_usable_evidence · function · L272-L278 — def _rule_has_usable_evidence(rule: SourceRule, source: Any) -> bool
+- _source_value · function · L281-L284 — def _source_value(source: Any, field_name: str) -> Any
+- _source_metadata · function · L287-L335 — def _source_metadata( *, use_case, origin, selection_decision, approval_decision, selected_snapshot, ) -> dict[str, EvidenceSourceSnapshot]
+- _resolve_origin · function · L338-L342 — def _resolve_origin(use_case)
+- _resolve_selection_decision · function · L345-L349 — def _resolve_selection_decision(origin)
+- _resolve_final_positive_approval · function · L352-L365 — def _resolve_final_positive_approval(use_case)
+- _selected_solution_snapshot · function · L368-L375 — def _selected_solution_snapshot(selection_decision)
+- _value_stream_from_origin · function · L378-L380 — def _value_stream_from_origin(origin)
+- _is_empty · function · L383-L390 — def _is_empty(value: Any) -> bool
+- _canonical_json · function · L393-L394 — def _canonical_json(value: Any) -> str
+- _iso · function · L397-L398 — def _iso(value: datetime | date | None) -> str

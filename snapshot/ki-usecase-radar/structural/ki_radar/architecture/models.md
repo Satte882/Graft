@@ -1,0 +1,43 @@
+# ki_radar/architecture/models.py
+
+- EvidenceBasis · class · L17-L20 — class EvidenceBasis(models.TextChoices)
+- TimeToValue · class · L23-L28 — class TimeToValue(models.TextChoices)
+- ValueStream · class · L31-L84 — class ValueStream(TimeStampedModel)
+- Status · class · L32-L35 — class Status(models.TextChoices)
+- Meta · class · L77-L78 — class Meta
+- __str__ · method · L80-L81 — def __str__(self) -> str
+- get_absolute_url · method · L83-L84 — def get_absolute_url(self)
+- ValueStreamStage · class · L87-L116 — class ValueStreamStage(TimeStampedModel)
+- Meta · class · L103-L110 — class Meta
+- __str__ · method · L112-L113 — def __str__(self) -> str
+- get_absolute_url · method · L115-L116 — def get_absolute_url(self)
+- ProcessAnalysis · class · L119-L171 — class ProcessAnalysis(TimeStampedModel)
+- Status · class · L120-L124 — class Status(models.TextChoices)
+- Meta · class · L164-L165 — class Meta
+- __str__ · method · L167-L168 — def __str__(self) -> str
+- get_absolute_url · method · L170-L171 — def get_absolute_url(self)
+- ProcessValidation · class · L174-L202 — class ProcessValidation(TimeStampedModel)
+- Meta · class · L192-L199 — class Meta
+- __str__ · method · L201-L202 — def __str__(self) -> str
+- SolutionOption · class · L205-L400 — class SolutionOption(TimeStampedModel)
+- OptionType · class · L206-L216 — class OptionType(models.TextChoices)
+- Recommendation · class · L218-L221 — class Recommendation(models.TextChoices)
+- EvaluationStatus · class · L223-L225 — class EvaluationStatus(models.TextChoices)
+- Effort · class · L227-L231 — class Effort(models.TextChoices)
+- Meta · class · L312-L320 — class Meta
+- fixed_ai_option_types · method · L323-L328 — def fixed_ai_option_types(cls) -> set[str]
+- fixed_non_ai_option_types · method · L331-L337 — def fixed_non_ai_option_types(cls) -> set[str]
+- clean · method · L339-L356 — def clean(self)
+- save · method · L358-L363 — def save(self, *args, **kwargs)
+- __str__ · method · L365-L366 — def __str__(self) -> str
+- get_absolute_url · method · L368-L369 — def get_absolute_url(self)
+- comparison_complete · method · L372-L392 — def comparison_complete(self) -> bool
+- starts_ai_use_case · method · L395-L400 — def starts_ai_use_case(self) -> bool
+- SolutionSelectionDecision · class · L403-L448 — class SolutionSelectionDecision(TimeStampedModel)
+- Meta · class · L428-L429 — class Meta
+- save · method · L431-L442 — def save(self, *args, **kwargs)
+- delete · method · L444-L445 — def delete(self, *args, **kwargs)
+- __str__ · method · L447-L448 — def __str__(self) -> str
+- UseCaseOrigin · class · L451-L482 — class UseCaseOrigin(TimeStampedModel)
+- Meta · class · L478-L479 — class Meta
+- __str__ · method · L481-L482 — def __str__(self) -> str

@@ -1,0 +1,23 @@
+# ki_radar/core/scenario_blueprint_validation.py
+
+- BlueprintValidationError · class · L24-L27 — class BlueprintValidationError(ValueError)
+- __init__ · method · L25-L27 — def __init__(self, errors: list[str] | tuple[str, ...])
+- ResolvedBlueprint · class · L31-L35 — class ResolvedBlueprint
+- load_blueprint_contract · function · L38-L39 — def load_blueprint_contract() -> dict[str, Any]
+- _as_dict · function · L42-L46 — def _as_dict(value: Any, path: str, errors: list[str]) -> dict[str, Any]
+- _as_list · function · L49-L53 — def _as_list(value: Any, path: str, errors: list[str]) -> list[Any]
+- _fields · function · L56-L70 — def _fields( value: dict[str, Any], section: str, contract: dict[str, Any], path: str, errors: list[str], ) -> None
+- _section · function · L73-L82 — def _section( value: Any, section: str, contract: dict[str, Any], path: str, errors: list[str], ) -> dict[str, Any]
+- _nonempty · function · L85-L87 — def _nonempty(value: Any, path: str, errors: list[str]) -> None
+- _allowed · function · L90-L92 — def _allowed(value: Any, path: str, allowed: list[str], errors: list[str]) -> None
+- _key · function · L95-L104 — def _key( value: Any, path: str, pattern: re.Pattern[str], max_length: int, errors: list[str], ) -> None
+- _form_errors · function · L107-L112 — def _form_errors(label: str, form) -> list[str]
+- _validate_references · function · L115-L148 — def _validate_references( payload: dict[str, Any], contract: dict[str, Any], errors: list[str], ) -> None
+- _validate_value_stream · function · L151-L214 — def _validate_value_stream( payload: dict[str, Any], contract: dict[str, Any], pattern: re.Pattern[str], max_length: int, errors: list[str], ) -> set[str]
+- _validate_process_and_options · function · L217-L277 — def _validate_process_and_options( payload: dict[str, Any], contract: dict[str, Any], pattern: re.Pattern[str], max_length: int, stage_keys: set[str], errors: list[str], ) -> tuple[dict[str, Any], set[str]]
+- _validate_use_case · function · L280-L343 — def _validate_use_case( payload: dict[str, Any], contract: dict[str, Any], pattern: re.Pattern[str], max_length: int, errors: list[str], ) -> None
+- _validate_structure · function · L346-L379 — def _validate_structure(payload: dict[str, Any], contract: dict[str, Any]) -> list[str]
+- _resolve_references · function · L382-L416 — def _resolve_references( payload: dict[str, Any], errors: list[str] ) -> tuple[BusinessUnit | None, dict[str, User]]
+- _pick · function · L419-L420 — def _pick(source: dict[str, Any], fields: tuple[str, ...]) -> dict[str, Any]
+- _validate_forms · function · L423-L582 — def _validate_forms( payload: dict[str, Any], unit: BusinessUnit, actors: dict[str, User] ) -> list[str]
+- validate_blueprint · function · L585-L601 — def validate_blueprint(payload: dict[str, Any]) -> ResolvedBlueprint

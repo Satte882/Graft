@@ -1,0 +1,21 @@
+# tests/test_block7_structural_contract_and_retirement.py
+
+- SourceFact · class · L34-L36 — class SourceFact
+- SourceContext · class · L39-L52 — class SourceContext
+- provider_payload · method · L43-L52 — def provider_payload()
+- source_context · function · L55-L56 — def source_context()
+- statement · function · L59-L69 — def statement(text="Qualitative Aussage")
+- valid_payload · function · L72-L83 — def valid_payload()
+- malformed_missing_statement_fields · function · L86-L87 — def malformed_missing_statement_fields(payload)
+- malformed_wrong_list_type · function · L90-L91 — def malformed_wrong_list_type(payload)
+- malformed_missing_empty_array · function · L94-L95 — def malformed_missing_empty_array(payload)
+- malformed_unknown_field · function · L98-L99 — def malformed_unknown_field(payload)
+- malformed_mixed_nested_types · function · L102-L105 — def malformed_mixed_nested_types(payload)
+- test_structural_contract_fuzz_rejects_malformed_provider_shapes · function · L118-L123 — def test_structural_contract_fuzz_rejects_malformed_provider_shapes(mutator)
+- test_structural_contract_accepts_complete_shape_and_prompt_repeats_requirement · function · L126-L134 — def test_structural_contract_accepts_complete_shape_and_prompt_repeats_requirement()
+- make_process · function · L137-L166 — def make_process(owner, business_unit)
+- make_option · function · L169-L177 — def make_option(process, owner, name="Option")
+- test_retirement_keeps_audit_record_and_excludes_option_from_active_selection · function · L181-L196 — def test_retirement_keeps_audit_record_and_excludes_option_from_active_selection( owner, business_unit, )
+- test_retirement_uses_same_edit_permission · function · L200-L207 — def test_retirement_uses_same_edit_permission(owner, reader, business_unit)
+- test_retirement_blocks_preferred_and_previously_selected_options · function · L211-L230 — def test_retirement_blocks_preferred_and_previously_selected_options(owner, business_unit)
+- test_retirement_blocks_use_case_linked_option · function · L234-L254 — def test_retirement_blocks_use_case_linked_option(owner, business_unit)

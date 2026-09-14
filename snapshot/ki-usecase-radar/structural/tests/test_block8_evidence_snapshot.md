@@ -1,0 +1,22 @@
+# tests/test_block8_evidence_snapshot.py
+
+- make_use_case · function · L14-L41 — def make_use_case(**overrides)
+- make_origin · function · L44-L52 — def make_origin(*, scope_in="Beschaffungsbedarf bis Bestellung", scope_out="Zahlung")
+- make_selection_decision · function · L55-L76 — def make_selection_decision(*, description="Snapshot-Beschreibung")
+- make_approval · function · L79-L90 — def make_approval(*, finalized_at=None)
+- build_snapshot · function · L93-L100 — def build_snapshot(use_case=None, **overrides)
+- test_normalization_is_structured_and_not_rendered_text_based · function · L103-L116 — def test_normalization_is_structured_and_not_rendered_text_based()
+- test_volatile_timestamps_do_not_change_semantic_hashes · function · L119-L140 — def test_volatile_timestamps_do_not_change_semantic_hashes()
+- test_final_approval_timestamp_is_semantic_handover_evidence · function · L143-L154 — def test_final_approval_timestamp_is_semantic_handover_evidence()
+- test_semantic_source_change_changes_relevant_field_and_snapshot_hash · function · L157-L167 — def test_semantic_source_change_changes_relevant_field_and_snapshot_hash()
+- test_value_stream_scope_wins_over_lower_priority_use_case_fallback · function · L170-L179 — def test_value_stream_scope_wins_over_lower_priority_use_case_fallback()
+- test_use_case_scope_fallback_is_used_only_without_architecture_value_stream · function · L182-L193 — def test_use_case_scope_fallback_is_used_only_without_architecture_value_stream()
+- test_solution_specific_evidence_comes_from_immutable_comparison_snapshot · function · L196-L209 — def test_solution_specific_evidence_comes_from_immutable_comparison_snapshot()
+- test_selected_snapshot_timestamp_is_not_part_of_semantic_hash · function · L212-L222 — def test_selected_snapshot_timestamp_is_not_part_of_semantic_hash()
+- FakeApprovalQuery · class · L225-L245 — class FakeApprovalQuery
+- __init__ · method · L226-L230 — def __init__(self, result)
+- filter · method · L232-L234 — def filter(self, **kwargs)
+- select_related · method · L236-L238 — def select_related(self, *fields)
+- order_by · method · L240-L242 — def order_by(self, *fields)
+- first · method · L244-L245 — def first(self)
+- test_approval_resolution_requires_final_positive_existing_decision · function · L248-L262 — def test_approval_resolution_requires_final_positive_existing_decision()

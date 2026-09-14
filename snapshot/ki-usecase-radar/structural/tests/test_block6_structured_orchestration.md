@@ -1,0 +1,18 @@
+# tests/test_block6_structured_orchestration.py
+
+- _use_case · function · L39-L55 — def _use_case(owner, business_unit)
+- _value_stream · function · L58-L67 — def _value_stream(owner, business_unit)
+- _batch · function · L70-L82 — def _batch(*, target, owner, target_type, placeholder="a")
+- _seal_batch · function · L85-L99 — def _seal_batch(batch)
+- _confirmed_metric_item · function · L102-L119 — def _confirmed_metric_item(*, batch, owner, use_case)
+- _confirmed_stage_item · function · L122-L157 — def _confirmed_stage_item(*, batch, owner)
+- _confirmed_process_item · function · L160-L187 — def _confirmed_process_item(*, batch, owner, stage_item)
+- _value_stream_graph · function · L190-L205 — def _value_stream_graph(owner, business_unit, placeholder="b")
+- test_use_case_group_commits_and_replays_idempotently · function · L208-L245 — def test_use_case_group_commits_and_replays_idempotently(owner, business_unit)
+- test_value_stream_group_creates_stage_and_process_once · function · L248-L277 — def test_value_stream_group_creates_stage_and_process_once(owner, business_unit)
+- test_process_failure_rolls_back_stage_and_retry_is_safe · function · L280-L341 — def test_process_failure_rolls_back_stage_and_retry_is_safe( owner, business_unit, monkeypatch, )
+- fail_process · function · L292-L293 — def fail_process(*, value_stream_id, item)
+- test_foreign_business_owner_cannot_reserve_batch · function · L344-L364 — def test_foreign_business_owner_cannot_reserve_batch(owner, other_owner, business_unit)
+- test_changed_item_graph_fails_before_domain_write · function · L367-L394 — def test_changed_item_graph_fails_before_domain_write(owner, business_unit)
+- test_processing_batch_is_not_reentered · function · L397-L430 — def test_processing_batch_is_not_reentered(owner, business_unit)
+- test_lock_order_is_fixed · function · L433-L439 — def test_lock_order_is_fixed()

@@ -1,0 +1,15 @@
+# tests/test_metric_presentation.py
+
+- test_metric_types_are_presented_consistently · function · L33-L39 — def test_metric_types_are_presented_consistently(metric_type, value, unit, expected)
+- test_metric_presentation_contract_for_duration · function · L42-L56 — def test_metric_presentation_contract_for_duration()
+- test_unknown_metric_type_uses_lossless_generic_fallback · function · L60-L69 — def test_unknown_metric_type_uses_lossless_generic_fallback(metric_type)
+- test_missing_metric_value_does_not_append_unit · function · L72-L81 — def test_missing_metric_value_does_not_append_unit()
+- test_count_trailing_zero_cleanup_is_not_rounding · function · L84-L87 — def test_count_trailing_zero_cleanup_is_not_rounding()
+- test_localized_decimal_widget_preserves_integer_zeroes_and_precision · function · L90-L96 — def test_localized_decimal_widget_preserves_integer_zeroes_and_precision()
+- test_benefit_form_accepts_german_decimal_separator · function · L99-L118 — def test_benefit_form_accepts_german_decimal_separator()
+- test_model_form_localized_fields_parse_comma_values · function · L122-L129 — def test_model_form_localized_fields_parse_comma_values()
+- metric_use_case · function · L133-L154 — def metric_use_case(owner, business_unit)
+- test_detail_and_outcome_workspace_use_same_localized_values · function · L158-L180 — def test_detail_and_outcome_workspace_use_same_localized_values( client, owner, metric_use_case, )
+- test_csv_export_uses_localized_values_without_unit_duplication · function · L184-L197 — def test_csv_export_uses_localized_values_without_unit_duplication( client, owner, metric_use_case, )
+- test_delivery_snapshot_uses_localized_metric_values · function · L201-L240 — def test_delivery_snapshot_uses_localized_metric_values(owner, business_unit)
+- test_delivery_snapshot_is_labelled_in_ui_and_markdown · function · L243-L249 — def test_delivery_snapshot_is_labelled_in_ui_and_markdown()

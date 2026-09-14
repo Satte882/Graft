@@ -1,0 +1,15 @@
+# tests/test_demo_data.py
+
+- enable_debug_for_demo_seed · function · L22-L23 — def enable_debug_for_demo_seed(settings)
+- test_seed_demo_data_creates_complete_dataset · function · L27-L53 — def test_seed_demo_data_creates_complete_dataset()
+- test_seed_demo_data_is_idempotent_and_restores_changed_fields · function · L57-L89 — def test_seed_demo_data_is_idempotent_and_restores_changed_fields()
+- test_seed_demo_data_does_not_change_existing_superuser · function · L93-L107 — def test_seed_demo_data_does_not_change_existing_superuser()
+- test_seed_demo_data_uses_supplied_password · function · L111-L116 — def test_seed_demo_data_uses_supplied_password()
+- test_seed_demo_data_refuses_when_debug_is_disabled · function · L120-L124 — def test_seed_demo_data_refuses_when_debug_is_disabled(settings)
+- test_demo_data_contains_all_lifecycle_statuses · function · L128-L141 — def test_demo_data_contains_all_lifecycle_statuses()
+- test_demo_data_contains_due_and_overdue_reviews · function · L145-L160 — def test_demo_data_contains_due_and_overdue_reviews()
+- test_governance_screenings_and_reviews_are_linked_to_demo_use_cases · function · L164-L180 — def test_governance_screenings_and_reviews_are_linked_to_demo_use_cases()
+- test_demo_data_contains_confirmed_go_live_exception · function · L184-L197 — def test_demo_data_contains_confirmed_go_live_exception()
+- test_clear_demo_data_removes_only_seeded_demo_data · function · L201-L225 — def test_clear_demo_data_removes_only_seeded_demo_data()
+- test_clear_demo_data_keeps_manual_data_with_demo_like_prefix · function · L229-L250 — def test_clear_demo_data_keeps_manual_data_with_demo_like_prefix()
+- test_clear_demo_data_keeps_demo_user_referenced_by_manual_use_case · function · L254-L271 — def test_clear_demo_data_keeps_demo_user_referenced_by_manual_use_case()

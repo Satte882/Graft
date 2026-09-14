@@ -1,0 +1,38 @@
+# ki_radar/accelerator/structured_adoption_orchestrator.py
+
+- StructuredCommitOutcome · class · L33-L35 — class StructuredCommitOutcome(StrEnum)
+- StructuredCommitError · class · L38-L52 — class StructuredCommitError(RuntimeError)
+- __init__ · method · L39-L52 — def __init__( self, message: str, *, step: str, error_code: str, item: StructuredAdoptionItem | None = None, details: dict[str, Any] | None = None, )
+- StructuredCommitPermissionDenied · class · L55-L56 — class StructuredCommitPermissionDenied(PermissionDenied)
+- StructuredBatchBusy · class · L59-L60 — class StructuredBatchBusy(StructuredCommitError)
+- StructuredBatchTerminal · class · L63-L64 — class StructuredBatchTerminal(StructuredCommitError)
+- StructuredCommitResult · class · L68-L74 — class StructuredCommitResult
+- _Reservation · class · L78-L81 — class _Reservation
+- _json_value · function · L106-L117 — def _json_value(value: Any) -> Any
+- _canonical_hash · function · L120-L127 — def _canonical_hash(payload: Any) -> str
+- build_selected_graph_hash · function · L130-L150 — def build_selected_graph_hash(items) -> str
+- build_idempotency_key · function · L153-L171 — def build_idempotency_key( *, session_id: UUID, analysis_id: UUID, target_object_type: str, target_object_id: UUID, selected_graph_hash: str, interpretation_version: str, ) -> str
+- _result_from_batch · function · L174-L188 — def _result_from_batch( batch: StructuredAdoptionBatch, *, replayed: bool, ) -> StructuredCommitResult
+- _expected_idempotency_key · function · L191-L199 — def _expected_idempotency_key(batch: StructuredAdoptionBatch) -> str
+- _load_target · function · L202-L223 — def _load_target(batch: StructuredAdoptionBatch, *, lock: bool)
+- _can_edit_target · function · L226-L231 — def _can_edit_target(*, actor, batch: StructuredAdoptionBatch, target) -> bool
+- _assert_permission · function · L234-L242 — def _assert_permission(*, actor, batch: StructuredAdoptionBatch, target) -> None
+- _assert_batch_identity · function · L245-L261 — def _assert_batch_identity( *, batch: StructuredAdoptionBatch, idempotency_key: str, ) -> None
+- _preflight · function · L264-L268 — def _preflight(*, batch_id: UUID, actor, idempotency_key: str) -> None
+- _reserve_batch · function · L272-L319 — def _reserve_batch( *, batch_id: UUID, actor, idempotency_key: str, ) -> _Reservation
+- _lock_root · function · L322-L323 — def _lock_root(batch: StructuredAdoptionBatch)
+- _lock_existing_stages · function · L326-L331 — def _lock_existing_stages(batch: StructuredAdoptionBatch, target) -> tuple[ValueStreamStage, ...]
+- _lock_items · function · L334-L339 — def _lock_items(batch: StructuredAdoptionBatch) -> tuple[StructuredAdoptionItem, ...]
+- _assert_capture_snapshots · function · L342-L374 — def _assert_capture_snapshots(batch: StructuredAdoptionBatch) -> None
+- _assert_item_graph · function · L377-L464 — def _assert_item_graph( *, batch: StructuredAdoptionBatch, items: tuple[StructuredAdoptionItem, ...], ) -> None
+- _selected_items · function · L467-L477 — def _selected_items( items: tuple[StructuredAdoptionItem, ...], kind: str, ) -> tuple[StructuredAdoptionItem, ...]
+- _wrap_execution_error · function · L480-L501 — def _wrap_execution_error( exc: Exception, *, step: str, items: tuple[StructuredAdoptionItem, ...], ) -> StructuredCommitError
+- _mark_metric_items_adopted · function · L504-L512 — def _mark_metric_items_adopted(items: tuple[StructuredAdoptionItem, ...]) -> None
+- _execute_use_case_group · function · L515-L557 — def _execute_use_case_group( *, batch: StructuredAdoptionBatch, target: UseCase, actor, items: tuple[StructuredAdoptionItem, ...], ) -> dict[str, Any]
+- _execute_value_stream_group · function · L560-L628 — def _execute_value_stream_group( *, batch: StructuredAdoptionBatch, target: ValueStream, items: tuple[StructuredAdoptionItem, ...], ) -> dict[str, Any]
+- _record_success_audit · function · L631-L652 — def _record_success_audit( *, batch: StructuredAdoptionBatch, actor, result_snapshot: dict[str, Any], ) -> None
+- _execute_reserved_batch · function · L656-L727 — def _execute_reserved_batch( *, batch_id: UUID, actor, idempotency_key: str, ) -> StructuredCommitResult
+- _failure_status · function · L730-L735 — def _failure_status(error: StructuredCommitError) -> str
+- _record_failure · function · L739-L790 — def _record_failure( *, batch_id: UUID, actor, error: StructuredCommitError, ) -> None
+- _normalize_error · function · L793-L807 — def _normalize_error(exc: Exception) -> StructuredCommitError
+- commit_structured_batch · function · L810-L835 — def commit_structured_batch( *, batch_id: UUID, actor, idempotency_key: str, ) -> StructuredCommitResult

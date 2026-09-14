@@ -1,0 +1,31 @@
+# ki_radar/use_cases/services.py
+
+- DecisionCheck · class · L35-L52 — class DecisionCheck
+- is_ready · method · L43-L44 — def is_ready(self) -> bool
+- state_label · method · L47-L52 — def state_label(self) -> str
+- ApprovalCheck · class · L56-L76 — class ApprovalCheck
+- is_ready · method · L61-L62 — def is_ready(self) -> bool
+- state · method · L65-L68 — def state(self) -> str
+- state_label · method · L71-L76 — def state_label(self) -> str
+- required_fields_for_status · function · L176-L177 — def required_fields_for_status(status: str) -> list[str]
+- _combined_requirements · function · L180-L181 — def _combined_requirements(*groups: list[str]) -> list[str]
+- _missing_fields · function · L184-L195 — def _missing_fields(use_case: UseCase, field_names: list[str]) -> list[str]
+- intake_blockers · function · L198-L201 — def intake_blockers(use_case: UseCase) -> list[str]
+- _readiness_warnings · function · L204-L205 — def _readiness_warnings(use_case: UseCase, fields: list[str]) -> list[str]
+- check_pilot_start · function · L208-L241 — def check_pilot_start(use_case: UseCase) -> DecisionCheck
+- check_go_live · function · L244-L294 — def check_go_live( use_case: UseCase, *, allow_early_go_live_exception: bool = False, ) -> DecisionCheck
+- decision_check_for_status · function · L297-L330 — def decision_check_for_status( use_case: UseCase, target_status: str, *, allow_early_go_live_exception: bool = False, ) -> DecisionCheck
+- current_decision_check · function · L333-L357 — def current_decision_check(use_case: UseCase) -> DecisionCheck
+- decision_due_date · function · L360-L363 — def decision_due_date(use_case: UseCase) -> date | None
+- decision_priority · function · L366-L380 — def decision_priority(use_case: UseCase) -> tuple[int, date, str]
+- validate_target_status · function · L383-L397 — def validate_target_status( use_case: UseCase, target_status: str, *, allow_early_go_live_exception: bool = False, ) -> None
+- validate_pilot_start_date · function · L400-L414 — def validate_pilot_start_date(*, use_case: UseCase, pilot_start: date | None) -> None
+- apply_status_transition · function · L418-L438 — def apply_status_transition( *, use_case: UseCase, target_status: str, actor, pilot_start: date | None = None, allow_early_go_live_exception: bool = False, **_kwargs, ) -> UseCase
+- approval_check · function · L441-L492 — def approval_check( *, use_case: UseCase, target_status: str, actor=None, governance_confirmed: bool = False, ) -> ApprovalCheck
+- create_decision_assessment · function · L496-L524 — def create_decision_assessment(*, use_case: UseCase, actor, data) -> DecisionAssessment
+- eligible_second_approvers · function · L527-L545 — def eligible_second_approvers(*, use_case: UseCase, first_decider)
+- can_review_conditional_decision · function · L548-L558 — def can_review_conditional_decision(*, decision: ApprovalDecision, actor) -> bool
+- _save_approval_decision · function · L561-L565 — def _save_approval_decision(**kwargs) -> ApprovalDecision
+- submit_approval_decision · function · L569-L617 — def submit_approval_decision(*, use_case: UseCase, actor, data) -> ApprovalDecision
+- confirm_conditional_decision · function · L621-L650 — def confirm_conditional_decision(*, decision: ApprovalDecision, actor) -> ApprovalDecision
+- return_conditional_decision · function · L654-L675 — def return_conditional_decision( *, decision: ApprovalDecision, actor, reason: str, ) -> ApprovalDecision

@@ -1,0 +1,16 @@
+# tests/test_delivery_handover.py
+
+- make_use_case · function · L39-L69 — def make_use_case(owner, business_unit, **overrides)
+- approve_use_case · function · L72-L111 — def approve_use_case(use_case, coordinator)
+- complete_delivery_readiness · function · L114-L194 — def complete_delivery_readiness(package)
+- test_inactive_technical_owner_is_one_canonical_server_blocker · function · L198-L258 — def test_inactive_technical_owner_is_one_canonical_server_blocker( client, owner, coordinator, business_unit, )
+- test_delivery_package_requires_final_positive_approval · function · L262-L270 — def test_delivery_package_requires_final_positive_approval( owner, coordinator, business_unit, )
+- test_delivery_package_is_prefilled_and_versioned · function · L274-L291 — def test_delivery_package_is_prefilled_and_versioned( owner, coordinator, business_unit, )
+- test_delivery_package_uses_optional_architecture_origin · function · L295-L371 — def test_delivery_package_uses_optional_architecture_origin( owner, coordinator, business_unit, )
+- test_ready_and_handover_make_version_immutable · function · L375-L397 — def test_ready_and_handover_make_version_immutable( owner, coordinator, business_unit, )
+- test_missing_required_content_blocks_ready_state · function · L401-L413 — def test_missing_required_content_blocks_ready_state( owner, coordinator, business_unit, )
+- test_delivery_views_require_post_for_creation_and_export_markdown · function · L417-L440 — def test_delivery_views_require_post_for_creation_and_export_markdown( client, owner, coordinator, business_unit, )
+- test_use_case_detail_renders_delivery_package_creation_as_post_form · function · L444-L463 — def test_use_case_detail_renders_delivery_package_creation_as_post_form( client, owner, coordinator, business_unit, )
+- test_delivery_detail_marks_ready_package_via_post · function · L467-L494 — def test_delivery_detail_marks_ready_package_via_post( client, owner, coordinator, business_unit, )
+- test_delivery_detail_hands_over_ready_package_via_post · function · L498-L527 — def test_delivery_detail_hands_over_ready_package_via_post( client, owner, coordinator, business_unit, )
+- test_delivery_overview_is_visible_and_creation_is_coordinator_only · function · L531-L547 — def test_delivery_overview_is_visible_and_creation_is_coordinator_only( client, owner, coordinator, business_unit, )

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "targetRepository": "Satte882/KI-UseCase-Radar",
+  "targetRef": "main",
+  "targetCommit": "9fa0cc156a3c49b4d623afbbea9322714a3c1b8e",
+  "graftPackage": "@nanonets/graft",
+  "graftVersion": "0.18.0",
+  "buildMode": "structural",
+  "semanticSnapshotPresent": false,
+  "structuralWiringSha256": "2a456a1e36778bf84ff417c8e4bd4dad73ace0b1f5c90eca29ef91f39ec86184",
+  "visualizationSha256": "7a4199e6f5f45b1d3196a9b3f7595fd5c41d281c7456b646e019987c58bc9eac",
+  "generatedAtUtc": "2026-09-14T11:52:51.126Z"
+}

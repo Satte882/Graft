@@ -11,9 +11,6 @@ on:
       - ".github/workflows/rebuild-graft.yml"
       - "config.json"
       - "scripts/**"
-  pull_request_target:
-    types:
-      - opened
 
 permissions:
   contents: write
@@ -37,7 +34,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Resolve configuration and source commit
         id: source
@@ -80,39 +77,41 @@ jobs:
           PACKAGE="$(node -e "const c=require('./config.json');process.stdout.write(c.graftPackage)")"
           VERSION="$(node -e "const c=require('./config.json');process.stdout.write(c.graftVersion)")"
           TARGET="$GITHUB_WORKSPACE/.work/target"
-          STRUCT_DIR="$GITHUB_WORKSPACE/.work/generated/structural"
-          SEM_DIR="$GITHUB_WORKSPACE/.work/generated/semantic"
-          SITE_DIR="$GITHUB_WORKSPACE/.work/generated/site"
+          TARGET_GRAPH="$TARGET/graft"
+          GENERATED="$GITHUB_WORKSPACE/.work/generated"
+          STRUCT_DIR="$GENERATED/structural"
+          SEM_DIR="$GENERATED/semantic"
+          SITE_DIR="$GENERATED/site"
 
-          rm -rf "$GITHUB_WORKSPACE/.work/generated"
-          mkdir -p "$STRUCT_DIR" "$SITE_DIR"
+          rm -rf "$GENERATED" "$TARGET_GRAPH"
+          mkdir -p "$GENERATED" "$SITE_DIR"
 
+          # The target checkout is disposable. Building Graft in its default
+          # location lets `graft viz` resolve the graph reliably while the
+          # remote KI-UseCase-Radar repository remains completely untouched.
           export GRAFT_NO_GITIGNORE=1
           export GRAFT_NO_IGNORE=1
-          export GRAFT_DIR="$STRUCT_DIR"
+          unset GRAFT_DIR || true
 
           npx -y "${PACKAGE}@${VERSION}" build "$TARGET"
           npx -y "${PACKAGE}@${VERSION}" check "$TARGET"
+          cp -a "$TARGET_GRAPH" "$STRUCT_DIR"
 
           BUILD_MODE=structural
-          ACTIVE_DIR="$STRUCT_DIR"
           TABS="code,outline"
 
           if [[ -n "${GRAFT_API_KEY:-}" && -n "${GRAFT_MODEL:-}" ]]; then
-            cp -a "$STRUCT_DIR" "$SEM_DIR"
-            export GRAFT_DIR="$SEM_DIR"
             export GRAFT_PROVIDER="${GRAFT_PROVIDER:-openai}"
             if [[ -z "${GRAFT_BASE_URL:-}" ]]; then
               unset GRAFT_BASE_URL
             fi
             npx -y "${PACKAGE}@${VERSION}" build "$TARGET" --deep
             npx -y "${PACKAGE}@${VERSION}" check "$TARGET"
+            cp -a "$TARGET_GRAPH" "$SEM_DIR"
             BUILD_MODE=deep
-            ACTIVE_DIR="$SEM_DIR"
             TABS="context,code,outline"
           fi
 
-          export GRAFT_DIR="$ACTIVE_DIR"
           npx -y "${PACKAGE}@${VERSION}" viz "$TARGET" \
             --export "$SITE_DIR" \
             --title "KI-UseCase-Radar @ ${TARGET_SHA::12}" \
